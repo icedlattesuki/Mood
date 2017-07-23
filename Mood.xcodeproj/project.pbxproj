@@ -7,12 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00099B661F219B6300A39CB8 /* AddMoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00099B651F219B6300A39CB8 /* AddMoodViewController.swift */; };
+		00099B681F21CF1800A39CB8 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00099B671F21CF1800A39CB8 /* ButtonExtension.swift */; };
+		00099B6A1F21D62F00A39CB8 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00099B691F21D62F00A39CB8 /* TextFieldExtension.swift */; };
+		00099B6C1F21F0D800A39CB8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00099B6B1F21F0D800A39CB8 /* SignUpViewController.swift */; };
+		00099B6E1F24356800A39CB8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 00099B6D1F24356800A39CB8 /* Podfile */; };
+		00099B701F243C7300A39CB8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00099B6F1F243C7300A39CB8 /* User.swift */; };
+		00099B721F24730800A39CB8 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00099B711F24730800A39CB8 /* SignInViewController.swift */; };
 		00E3E0B81F1F93580041AD21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E3E0B71F1F93580041AD21 /* AppDelegate.swift */; };
-		00E3E0BA1F1F93580041AD21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E3E0B91F1F93580041AD21 /* ViewController.swift */; };
 		00E3E0BD1F1F93580041AD21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00E3E0BB1F1F93580041AD21 /* Main.storyboard */; };
 		00E3E0BF1F1F93580041AD21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00E3E0BE1F1F93580041AD21 /* Assets.xcassets */; };
 		00E3E0C21F1F93580041AD21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00E3E0C01F1F93580041AD21 /* LaunchScreen.storyboard */; };
 		00E3E0CD1F1F93580041AD21 /* MoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E3E0CC1F1F93580041AD21 /* MoodTests.swift */; };
+		00E3E0D81F20AD0B0041AD21 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E3E0D71F20AD0B0041AD21 /* MainTabBarController.swift */; };
+		00E3E0DA1F20E0C90041AD21 /* MoodControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E3E0D91F20E0C90041AD21 /* MoodControl.swift */; };
+		6086D7862728834172E4FC0D /* Pods_Mood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CC7157BC7BB66B1B3D0720 /* Pods_Mood.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,9 +35,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00099B651F219B6300A39CB8 /* AddMoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMoodViewController.swift; sourceTree = "<group>"; };
+		00099B671F21CF1800A39CB8 /* ButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
+		00099B691F21D62F00A39CB8 /* TextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
+		00099B6B1F21F0D800A39CB8 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		00099B6D1F24356800A39CB8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		00099B6F1F243C7300A39CB8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		00099B711F24730800A39CB8 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		00E3E0B41F1F93580041AD21 /* Mood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E3E0B71F1F93580041AD21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		00E3E0B91F1F93580041AD21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		00E3E0BC1F1F93580041AD21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		00E3E0BE1F1F93580041AD21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00E3E0C11F1F93580041AD21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +51,11 @@
 		00E3E0C81F1F93580041AD21 /* MoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E3E0CC1F1F93580041AD21 /* MoodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodTests.swift; sourceTree = "<group>"; };
 		00E3E0CE1F1F93580041AD21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00E3E0D71F20AD0B0041AD21 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		00E3E0D91F20E0C90041AD21 /* MoodControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodControl.swift; sourceTree = "<group>"; };
+		873243B322AC1C5FB90FC533 /* Pods-Mood.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mood.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mood/Pods-Mood.release.xcconfig"; sourceTree = "<group>"; };
+		D4CC7157BC7BB66B1B3D0720 /* Pods_Mood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF9DFE453A84F958341F34F4 /* Pods-Mood.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mood.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mood/Pods-Mood.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6086D7862728834172E4FC0D /* Pods_Mood.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +83,9 @@
 				00E3E0B61F1F93580041AD21 /* Mood */,
 				00E3E0CB1F1F93580041AD21 /* MoodTests */,
 				00E3E0B51F1F93580041AD21 /* Products */,
+				00099B6D1F24356800A39CB8 /* Podfile */,
+				55070F87AA495EFD3EDCFBE9 /* Pods */,
+				DF3907C039E41E2C89A44AA2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,9 +101,16 @@
 		00E3E0B61F1F93580041AD21 /* Mood */ = {
 			isa = PBXGroup;
 			children = (
-				00E3E0B71F1F93580041AD21 /* AppDelegate.swift */,
-				00E3E0B91F1F93580041AD21 /* ViewController.swift */,
 				00E3E0BB1F1F93580041AD21 /* Main.storyboard */,
+				00E3E0B71F1F93580041AD21 /* AppDelegate.swift */,
+				00E3E0D71F20AD0B0041AD21 /* MainTabBarController.swift */,
+				00099B651F219B6300A39CB8 /* AddMoodViewController.swift */,
+				00E3E0D91F20E0C90041AD21 /* MoodControl.swift */,
+				00099B711F24730800A39CB8 /* SignInViewController.swift */,
+				00099B6B1F21F0D800A39CB8 /* SignUpViewController.swift */,
+				00099B6F1F243C7300A39CB8 /* User.swift */,
+				00099B671F21CF1800A39CB8 /* ButtonExtension.swift */,
+				00099B691F21D62F00A39CB8 /* TextFieldExtension.swift */,
 				00E3E0BE1F1F93580041AD21 /* Assets.xcassets */,
 				00E3E0C01F1F93580041AD21 /* LaunchScreen.storyboard */,
 				00E3E0C31F1F93580041AD21 /* Info.plist */,
@@ -96,6 +127,23 @@
 			path = MoodTests;
 			sourceTree = "<group>";
 		};
+		55070F87AA495EFD3EDCFBE9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FF9DFE453A84F958341F34F4 /* Pods-Mood.debug.xcconfig */,
+				873243B322AC1C5FB90FC533 /* Pods-Mood.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DF3907C039E41E2C89A44AA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D4CC7157BC7BB66B1B3D0720 /* Pods_Mood.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +151,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E3E0D11F1F93580041AD21 /* Build configuration list for PBXNativeTarget "Mood" */;
 			buildPhases = (
+				B85A7C804F38BE7761A0BBE0 /* [CP] Check Pods Manifest.lock */,
 				00E3E0B01F1F93580041AD21 /* Sources */,
 				00E3E0B11F1F93580041AD21 /* Frameworks */,
 				00E3E0B21F1F93580041AD21 /* Resources */,
+				6C1F1ED8EF5A755D9C25EEDA /* [CP] Embed Pods Frameworks */,
+				A41EC6736B6B460906CF5DFD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -146,6 +197,7 @@
 				TargetAttributes = {
 					00E3E0B31F1F93580041AD21 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = TXSLR648AM;
 						ProvisioningStyle = Automatic;
 					};
 					00E3E0C71F1F93580041AD21 = {
@@ -179,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00099B6E1F24356800A39CB8 /* Podfile in Resources */,
 				00E3E0C21F1F93580041AD21 /* LaunchScreen.storyboard in Resources */,
 				00E3E0BF1F1F93580041AD21 /* Assets.xcassets in Resources */,
 				00E3E0BD1F1F93580041AD21 /* Main.storyboard in Resources */,
@@ -194,12 +247,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6C1F1ED8EF5A755D9C25EEDA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mood/Pods-Mood-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A41EC6736B6B460906CF5DFD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mood/Pods-Mood-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B85A7C804F38BE7761A0BBE0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		00E3E0B01F1F93580041AD21 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E3E0BA1F1F93580041AD21 /* ViewController.swift in Sources */,
+				00E3E0DA1F20E0C90041AD21 /* MoodControl.swift in Sources */,
+				00099B6C1F21F0D800A39CB8 /* SignUpViewController.swift in Sources */,
+				00099B661F219B6300A39CB8 /* AddMoodViewController.swift in Sources */,
+				00099B681F21CF1800A39CB8 /* ButtonExtension.swift in Sources */,
+				00099B701F243C7300A39CB8 /* User.swift in Sources */,
+				00099B721F24730800A39CB8 /* SignInViewController.swift in Sources */,
+				00099B6A1F21D62F00A39CB8 /* TextFieldExtension.swift in Sources */,
+				00E3E0D81F20AD0B0041AD21 /* MainTabBarController.swift in Sources */,
 				00E3E0B81F1F93580041AD21 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,8 +447,10 @@
 		};
 		00E3E0D21F1F93580041AD21 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF9DFE453A84F958341F34F4 /* Pods-Mood.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TXSLR648AM;
 				INFOPLIST_FILE = Mood/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.zju.hys.Mood;
@@ -351,8 +461,10 @@
 		};
 		00E3E0D31F1F93580041AD21 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 873243B322AC1C5FB90FC533 /* Pods-Mood.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TXSLR648AM;
 				INFOPLIST_FILE = Mood/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.zju.hys.Mood;
@@ -408,6 +520,7 @@
 				00E3E0D31F1F93580041AD21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		00E3E0D41F1F93580041AD21 /* Build configuration list for PBXNativeTarget "MoodTests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +529,7 @@
 				00E3E0D61F1F93580041AD21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
