@@ -9,29 +9,7 @@
 import UIKit
 import LeanCloud
 
-//各类错误
-enum Errors {
-    
-    //注册错误
-    case userNameDuplicate
-    case emailDuplicate
-    case unvalidEmail
-    
-    //登录错误
-    case userNotExist
-    case userNameAndPasswordMismatch
-    case emailUnverified
-    
-    //未知错误
-    case unknownError
-}
-
-//定义Result储存登录注册的结果信息
-struct Result {
-    var success = false
-    var error: Errors = .unknownError
-}
-
+//用户类
 class User {
     
     //MARK: Properties
