@@ -6,12 +6,13 @@ PODS:
     - Alamofire (~> 4.2.0)
 
 DEPENDENCIES:
+  - Alamofire
   - LeanCloud
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   LeanCloud: e1e54faeae61634c3b98b437415f0f3ac2837fe1
 
-PODFILE CHECKSUM: b3b6a4bed3755e1c948e19eb8d670811eb52fb4d
+PODFILE CHECKSUM: c52ae9d150c984bc10defa790f28da841a42ca59
 
 COCOAPODS: 1.2.1
