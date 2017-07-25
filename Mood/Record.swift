@@ -16,6 +16,7 @@ class Record {
     
     var moodScore: Int
     var sentence: String
+    var createdAt: Date!
     
     //MARK: Initialization
     
@@ -24,7 +25,13 @@ class Record {
         self.sentence = sentence
     }
     
-    //MARK: Methods
+    private init(moodScore: Int, sentence: String, createdAt: Date) {
+        self.moodScore = moodScore
+        self.sentence = sentence
+        self.createdAt = createdAt
+    }
+    
+    //MARK: Public Methods
     
     func save() -> Result {
         var result = Result()
@@ -42,6 +49,39 @@ class Record {
                 result.success = true
             }
         }
+        return result
+    }
+    
+    //MARK: Static methods
+    
+    static func getAllRecords() -> [Record] {
+        var result = [Record]()
+        let query = LCQuery(className: "MoodRecords")
+        
+        if let currentUser = LCUser.current {
+            query.whereKey("email", .equalTo(currentUser.email!))
+        } else {
+            fatalError("错误！未登录")
+        }
+        query.whereKey("moodScore", .selected)
+        query.whereKey("createdAt", .selected)
+        query.whereKey("sentence", .selected)
+        query.whereKey("createdAt", .ascending)
+        
+        let queryResult = query.find().objects
+        
+        if queryResult != nil {
+            for object in queryResult! {
+                let objectMoodScore = object.get("moodScore")!.intValue!
+                let objectSentence = object.get("sentence")!.stringValue!
+                let objectCreatedAt = object.createdAt!.dateValue!
+                
+                let record = Record(moodScore: objectMoodScore, sentence: objectSentence, createdAt: objectCreatedAt)
+                
+                result.append(record)
+            }
+        }
+        
         return result
     }
 }
