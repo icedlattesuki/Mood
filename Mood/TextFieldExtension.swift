@@ -42,6 +42,7 @@ class TextFieldExtension: UITextField, UITextFieldDelegate{
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        self.resignFirstResponder()
         if self.text == nil || self.text == "" {
             self.placeholder = tmpPlaceholder
             self.textAlignment = .center
