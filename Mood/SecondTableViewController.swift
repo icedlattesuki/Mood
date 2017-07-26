@@ -8,7 +8,11 @@
 
 import UIKit
 
-class SecondTableViewController: UITableViewController {
+private extension Selector {
+    static let loadData = #selector(SecondTableViewController.loadData)
+}
+
+class SecondTableViewController: UITableViewController{
     
     //MARK: Properties
     
@@ -19,18 +23,20 @@ class SecondTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        records = Record.getAllRecords()
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl!.attributedTitle = NSAttributedString(string: "下拉刷新")
+        self.refreshControl!.addTarget(self, action: .loadData, for: .valueChanged)
+        
+        self.loadData()
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return records.count
     }
 
@@ -40,7 +46,6 @@ class SecondTableViewController: UITableViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyy-MM-dd"
         cell.timeLabel.text = dateFormatter.string(from: records[indexPath.row].createdAt)
-        print(cell.timeLabel.text!)
         cell.sentenceLabel.text = records[indexPath.row].sentence
         
         var image: UIImage
@@ -66,7 +71,15 @@ class SecondTableViewController: UITableViewController {
         
         return cell
     }
-
+    
+    //MARK: Methods
+    
+    func loadData() {
+        self.records = Record.getAllRecords()
+        self.tableView.reloadData()
+        self.refreshControl!.endRefreshing()
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -102,14 +115,11 @@ class SecondTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let moodDetailViewController = segue.destination as! MoodDetailViewController
+        let cell = self.tableView.cellForRow(at: self.tableView.indexPathForSelectedRow!) as! HistoryMoodTableViewCell
+        moodDetailViewController.text = cell.sentenceLabel.text!
     }
-    */
-
 }
