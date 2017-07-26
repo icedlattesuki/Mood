@@ -54,7 +54,7 @@
             </objects>
             <point key="canvasLocation" x="1487" y="1060"/>
         </scene>
-        <!--往事如烟-->
+        <!--历史心情-->
         <scene sceneID="1mr-Pk-aLm">
             <objects>
                 <tableViewController id="mXQ-z8-one" customClass="SecondTableViewController" customModule="Mood" customModuleProvider="target" sceneMemberID="viewController">
@@ -105,6 +105,7 @@
                                     <outlet property="moodImage" destination="3eL-ci-JcQ" id="5Ys-A2-LRS"/>
                                     <outlet property="sentenceLabel" destination="sg1-OG-vHF" id="Nx9-ih-JfX"/>
                                     <outlet property="timeLabel" destination="fxy-TX-zk7" id="npo-B2-t0G"/>
+                                    <segue destination="R6Y-xu-pdO" kind="show" id="Wlk-At-32J"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -113,11 +114,46 @@
                             <outlet property="delegate" destination="mXQ-z8-one" id="xZ0-FI-uJ5"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="往事如烟" id="MU5-Z4-bDs"/>
+                    <navigationItem key="navigationItem" title="历史心情" id="MU5-Z4-bDs"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKd-61-fhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1485.5999999999999" y="251.42428785607197"/>
+        </scene>
+        <!--Mood Detail View Controller-->
+        <scene sceneID="oe5-1A-Qss">
+            <objects>
+                <viewController id="R6Y-xu-pdO" customClass="MoodDetailViewController" customModule="Mood" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XZ0-tM-jo0"/>
+                        <viewControllerLayoutGuide type="bottom" id="FlV-VS-Ji6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YSu-MC-zBA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scl-Kv-Qyt" customClass="LabelExtension" customModule="Mood" customModuleProvider="target">
+                                <rect key="frame" x="26" y="298.5" width="323" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="scl-Kv-Qyt" firstAttribute="centerX" secondItem="YSu-MC-zBA" secondAttribute="centerX" id="8d4-id-7bx"/>
+                            <constraint firstItem="scl-Kv-Qyt" firstAttribute="centerY" secondItem="YSu-MC-zBA" secondAttribute="centerY" id="GYo-EW-7nT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="scl-Kv-Qyt" secondAttribute="trailing" constant="10" id="Uof-Ip-L5m"/>
+                            <constraint firstItem="scl-Kv-Qyt" firstAttribute="leading" secondItem="YSu-MC-zBA" secondAttribute="leadingMargin" constant="10" id="mge-hn-c8a"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sentenceLabel" destination="scl-Kv-Qyt" id="inv-VS-zRg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lM8-rO-grJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2743" y="251"/>
         </scene>
         <!--添加心情-->
         <scene sceneID="gxI-xI-NEc">
@@ -135,34 +171,40 @@
                                 <rect key="frame" x="16" y="174" width="343" height="343"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="PUl-uL-wJb">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="130.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="135"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日心情" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIf-MW-7Xj">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="aaH-uK-cLE"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="L0W-Dk-6YP" customClass="MoodControl" customModule="Mood" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="40.5" width="343" height="90"/>
+                                                <rect key="frame" x="0.0" y="40" width="343" height="95"/>
                                             </stackView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4jo-St-DPV">
-                                        <rect key="frame" x="0.0" y="170.5" width="343" height="172.5"/>
+                                        <rect key="frame" x="0.0" y="175" width="343" height="168"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="写给自己的一段话" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsx-vQ-vKa">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="iCf-av-eTD"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TbH-yN-T9f" customClass="TextFieldExtension" customModule="Mood" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="40.5" width="343" height="132"/>
-                                                <nil key="textColor"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="T5K-Ow-8S5" customClass="TextViewExtension" customModule="Mood" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="40" width="343" height="128"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                            </textField>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -170,9 +212,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wNY-NE-ccx" firstAttribute="top" secondItem="tY5-ln-oOH" secondAttribute="bottom" constant="150" id="9WF-VZ-QHE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tY5-ln-oOH" secondAttribute="trailing" id="Ehr-VD-aIH"/>
-                            <constraint firstItem="tY5-ln-oOH" firstAttribute="top" secondItem="R7y-XF-mTu" secondAttribute="bottom" constant="110" id="MxT-n7-hoW"/>
+                            <constraint firstItem="wNY-NE-ccx" firstAttribute="top" secondItem="tY5-ln-oOH" secondAttribute="bottom" constant="150" id="Mjt-Kt-igP"/>
+                            <constraint firstItem="tY5-ln-oOH" firstAttribute="top" secondItem="R7y-XF-mTu" secondAttribute="bottom" constant="110" id="Phy-Zv-01I"/>
                             <constraint firstItem="tY5-ln-oOH" firstAttribute="leading" secondItem="9xm-rm-fNQ" secondAttribute="leadingMargin" id="qXm-GG-8jI"/>
                         </constraints>
                     </view>
@@ -190,7 +232,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="moodControl" destination="L0W-Dk-6YP" id="NJH-80-pxU"/>
-                        <outlet property="textField" destination="TbH-yN-T9f" id="1Mx-QD-Ufz"/>
+                        <outlet property="textField" destination="T5K-Ow-8S5" id="c0v-WG-J7c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34Y-zd-pBb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -434,7 +476,7 @@
         <scene sceneID="zzt-WX-cLV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xp1-pE-GRb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="每日一句" image="每日一句" id="3c9-rT-2R6"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="每日一句" image="每日一句" id="3c9-rT-2R6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="A2I-sb-Ck5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -467,11 +509,11 @@
             </objects>
             <point key="canvasLocation" x="2477.5999999999999" y="-505.09745127436287"/>
         </scene>
-        <!--往事如烟-->
+        <!--历史心情-->
         <scene sceneID="ASv-zC-mhw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SKj-Rh-9mD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="往事如烟" image="心路历程" id="S4e-JD-7zm"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="历史心情" image="心路历程" id="S4e-JD-7zm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GHm-uG-Mjk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -490,7 +532,7 @@
         <scene sceneID="uUy-Gd-Ub1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Vf-at-ba1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="心情大数据" image="数据分析" id="lgy-ri-JCE"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="心情大数据" image="数据分析" id="lgy-ri-JCE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vUO-go-rvR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
