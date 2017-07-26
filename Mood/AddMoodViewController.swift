@@ -13,7 +13,7 @@ class AddMoodViewController: UIViewController {
     //MARK: Properties
     
     @IBOutlet weak var moodControl: MoodControl!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textField: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +22,7 @@ class AddMoodViewController: UIViewController {
     //MARK: Action
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
+        self.textField.resignFirstResponder()
         dismiss(animated: true, completion: nil)
     }
     
@@ -35,6 +36,7 @@ class AddMoodViewController: UIViewController {
         } else {
             let alertController = UIAlertController(title:"", message:"", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "知道啦", style: .cancel) { action in
+                self.textField.resignFirstResponder()
                 self.dismiss(animated: true, completion: nil)
             }
             
