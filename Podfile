@@ -5,5 +5,4 @@ use_frameworks!
 target ‘Mood’ do
 pod 'LeanCloud'   
 pod 'Alamofire'
-pod 'Charts'
 end
