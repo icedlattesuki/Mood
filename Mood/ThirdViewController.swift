@@ -14,18 +14,22 @@ class ThirdViewController: UIViewController {
     //MARK: Properties
     
     @IBOutlet weak var totalScoreLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var lineChartView: LineChartView!
+    @IBOutlet weak var pieChartView: PieChartView!
     var records = [Record]()
     
     //MARK: override
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         records = Record.getAllRecords()
         
         showScore()
-        setupchart()
+        setupLineChart()
+        setupPieChart()
     }
     
     //MARK: Methods
@@ -40,7 +44,7 @@ class ThirdViewController: UIViewController {
         totalScoreLabel.text = String(totalScore)
     }
     
-    func setupchart() {
+    func setupLineChart() {
         var dataEntries = [ChartDataEntry]()
         var dates = [String]()
         
@@ -104,6 +108,89 @@ class ThirdViewController: UIViewController {
         lineChartView.rightAxis.enabled = false
         //左边的Y轴不显示
         lineChartView.leftAxis.enabled = false
+    }
+    
+    func setupPieChart() {
+        var dataEntries = [PieChartDataEntry]()
+        var days = [0,0,0,0,0,0]
+        let names = ["想哭","悲伤","难过","一般","愉快","开心"]
+        let red: [Double] = [26,231,230,241,46,52]
+        let green: [Double] = [188,76,126,196,204,152]
+        let blue: [Double] = [156,60,34,15,113,219]
 
+        for record in records {
+            days[record.moodScore] += 1
+        }
+        
+        for index in 0..<days.count {
+            let dataEntry = PieChartDataEntry()
+            
+            dataEntry.y = Double(days[days.count - index - 1])
+            dataEntry.label = names[days.count - index - 1]
+            dataEntries.append(dataEntry)
+        }
+        
+        let dataSet = PieChartDataSet(values: dataEntries, label: "")
+        var colors = [UIColor]()
+        
+        for index in 0..<red.count {
+            let color = UIColor(red: CGFloat(red[index]/255), green: CGFloat(green[index]/255), blue: CGFloat(blue[index]/255), alpha: 0.8)
+            
+            colors.append(color)
+        }
+        
+        //设置颜色
+        dataSet.colors = colors
+        //显示数值
+        dataSet.drawValuesEnabled = true
+        //内部显示
+        dataSet.yValuePosition = .insideSlice
+        //选中后扇形区域不放大（这样可以使得图形更大）
+        dataSet.selectionShift = 0
+        
+        //自定义数据格式
+        let formatter = NumberFormatter()
+        
+        formatter.numberStyle = .percent
+        formatter.maximumFractionDigits = 0
+        
+        let myFormatter = MyFormatter(formatter: formatter)
+        
+        dataSet.valueFormatter = myFormatter
+        
+        let data = PieChartData(dataSet: dataSet)
+        
+        //更新数据
+        pieChartView.data = data
+        //不显示label
+        pieChartView.drawEntryLabelsEnabled = false
+        //使用百分比
+        pieChartView.usePercentValuesEnabled = true
+        //允许空心
+        pieChartView.drawHoleEnabled = true
+        //设置空心圆半径百分比
+        pieChartView.holeRadiusPercent = 0.5
+        //设置空心圆颜色
+        pieChartView.holeColor = UIColor.clear
+        //设置空心外圆半径百分比
+        pieChartView.transparentCircleRadiusPercent = 0.52
+        //设置空心外圆颜色
+        pieChartView.transparentCircleColor = UIColor(red: 210/255, green: 145/255, blue: 165/255, alpha: 0.3)
+        //关闭图表描述
+        pieChartView.chartDescription!.enabled = false
+        //图例居中显示
+        pieChartView.legend.horizontalAlignment = .center
+        //图例最大百分比
+        pieChartView.legend.maxSizePercent = 1
+        //不知道
+        pieChartView.legend.formToTextSpace = 5
+        //图例字体
+        pieChartView.legend.font = UIFont.systemFont(ofSize: 10)
+        //设置图例样式为圆形
+        pieChartView.legend.form = .circle
+        //设置图例大小
+        pieChartView.legend.formSize = 12
+        //关闭旋转
+        pieChartView.rotationEnabled = false
     }
 }
