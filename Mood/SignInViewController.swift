@@ -7,18 +7,26 @@
 //
 
 import UIKit
+import Material
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, TextFieldDelegate{
     
     //MARK: Properties
     
-    @IBOutlet weak var userNameTextField: TextFieldExtension!
-    @IBOutlet weak var passwordTextField: TextFieldExtension!
+    @IBOutlet weak var userNameTextField: TextField!
+    @IBOutlet weak var passwordTextField: TextField!
 
     //MARK: Override functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userNameTextField.placeholder = "User Name"
+        passwordTextField.placeholder = "Password"
+        userNameTextField.delegate = self
+        passwordTextField.delegate = self
+        
+        hideKeyboardWhenTappedAround()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +42,9 @@ class SignInViewController: UIViewController {
         let alertController = UIAlertController(title: "登录失败", message: "", preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "知道啦", style: .cancel, handler: nil)
         alertController.addAction(alertAction)
+        
+        userNameTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
         
         //判断用户名或密码是否为空
         if userName == "" || password == "" {
@@ -62,5 +73,12 @@ class SignInViewController: UIViewController {
             }
             present(alertController, animated: true)
         }
+    }
+
+    //MARK: TextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }
