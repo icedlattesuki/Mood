@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Material
 
 private extension Selector {
     static let loadData = #selector(SecondTableViewController.loadData)
@@ -42,32 +43,14 @@ class SecondTableViewController: UITableViewController{
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryMoodTableViewCell", for: indexPath) as! HistoryMoodTableViewCell
+        let card = Card()
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyy-MM-dd"
-        cell.timeLabel.text = dateFormatter.string(from: records[indexPath.row].createdAt)
-        cell.sentenceLabel.text = records[indexPath.row].sentence
-        
-        var image: UIImage
-        
-        switch records[indexPath.row].moodScore {
-        case 0:
-            image = UIImage(named: "想哭")!
-        case 1:
-            image = UIImage(named: "悲伤")!
-        case 2:
-            image = UIImage(named: "难过")!
-        case 3:
-            image = UIImage(named: "一般")!
-        case 4:
-            image = UIImage(named: "愉快")!
-        case 5:
-            image = UIImage(named: "开心")!
-        default:
-            image = UIImage()
+        for view in cell.customView.subviews {
+            view.removeFromSuperview()
         }
         
-        cell.imageView!.image = image
+        self.setupcard(card: card, record: records[indexPath.row])
+        cell.customView.layout(card).horizontally(left: 8, right: 8).top(30)
         
         return cell
     }
@@ -78,6 +61,77 @@ class SecondTableViewController: UITableViewController{
         self.records = Record.getAllRecords()
         self.tableView.reloadData()
         self.refreshControl!.endRefreshing()
+    }
+    
+    private func setupcard(card: Card, record: Record) {
+        let toolbar = Toolbar()
+        
+        toolbar.title = "Mood"
+        toolbar.titleLabel.textAlignment = .left
+        
+        toolbar.detail = "记录每日心情"
+        toolbar.detailLabel.textAlignment = .left
+        toolbar.detailLabel.textColor = Color.blueGrey.base
+        
+        let button = UIButton()
+        button.setImage(setupImage(record), for: .normal)
+        
+        toolbar.rightViews = [button]
+        
+        card.toolbar = toolbar
+        
+        let contentView = UILabel()
+        
+        contentView.numberOfLines = 0
+        contentView.text = record.sentence
+        contentView.font = RobotoFont.regular(with: 14)
+        
+        card.contentView = contentView
+        
+        let bootombar = Bar()
+        let dateLabel = UILabel()
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        
+        dateLabel.textColor = Color.blueGrey.base
+        dateLabel.font = RobotoFont.regular(with: 12)
+        dateLabel.text = dateFormatter.string(from: record.createdAt)
+        
+        bootombar.leftViews = [dateLabel]
+        
+        card.bottomBar = bootombar
+        
+        card.toolbarEdgeInsetsPreset = .wideRectangle2
+        card.contentViewEdgeInsetsPreset = .wideRectangle2
+        card.contentViewEdgeInsets.left = 12
+        card.bottomBarEdgeInsetsPreset = .wideRectangle2
+        
+        card.borderWidth = 0.1
+    }
+    
+    private func setupImage(_ record: Record) -> UIImage {
+        var image: UIImage
+        
+        switch record.moodScore {
+        case 5:
+            image = UIImage(named: "开心1")!
+        case 4:
+            image = UIImage(named: "愉快1")!
+        case 3:
+            image = UIImage(named: "一般1")!
+        case 2:
+            image = UIImage(named: "难过1")!
+        case 1:
+            image = UIImage(named: "悲伤1")!
+        case 0:
+            image = UIImage(named: "想哭1")!
+        default:
+            image = UIImage()
+        }
+        
+        return image
     }
     
     /*
@@ -114,12 +168,5 @@ class SecondTableViewController: UITableViewController{
         return true
     }
     */
-
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let moodDetailViewController = segue.destination as! MoodDetailViewController
-        let cell = self.tableView.cellForRow(at: self.tableView.indexPathForSelectedRow!) as! HistoryMoodTableViewCell
-        moodDetailViewController.text = cell.sentenceLabel.text!
-    }
 }
+
