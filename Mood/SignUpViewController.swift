@@ -7,18 +7,30 @@
 //
 
 import UIKit
+import Material
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, TextFieldDelegate{
     
     //MARK: Properties
-
-    @IBOutlet weak var userNameTextField: TextFieldExtension!
-    @IBOutlet weak var emailTextField: TextFieldExtension!
-    @IBOutlet weak var password1TextField: TextFieldExtension!
-    @IBOutlet weak var password2TextField: TextFieldExtension!
+    
+    @IBOutlet weak var userNameTextField: TextField!
+    @IBOutlet weak var emailTextField: TextField!
+    @IBOutlet weak var password1TextField: TextField!
+    @IBOutlet weak var password2TextField: TextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userNameTextField.placeholder = "User Name"
+        emailTextField.placeholder = "E-Mail"
+        password1TextField.placeholder = "Password"
+        password2TextField.placeholder = "Password Again"
+        userNameTextField.delegate = self
+        emailTextField.delegate = self
+        password1TextField.delegate = self
+        password2TextField.delegate = self
+        
+        hideKeyboardWhenTappedAround()
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,5 +110,12 @@ class SignUpViewController: UIViewController {
             }
             present(alertController, animated: true)
         }
+    }
+    
+    //MARK: TextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }
