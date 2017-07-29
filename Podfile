@@ -6,4 +6,5 @@ target ‘Mood’ do
 pod 'LeanCloud'   
 pod 'Alamofire'
 pod ‘Charts’
+pod 'Material'
 end
