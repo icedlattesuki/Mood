@@ -12,9 +12,7 @@ class HistoryMoodTableViewCell: UITableViewCell {
     
     //MARK: Properties
     
-    @IBOutlet weak var moodImage: UIImageView!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var sentenceLabel: UILabel!
+    @IBOutlet weak var customView: UIView!
     
     //MARK: Override functions
     
