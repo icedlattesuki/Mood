@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Material
 
-class TextFieldExtension: UITextField, UITextFieldDelegate{
+class TextFieldExtension: TextField, UITextFieldDelegate{
     
     //MARK: Properties
     
@@ -19,7 +20,6 @@ class TextFieldExtension: UITextField, UITextFieldDelegate{
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.borderStyle = .roundedRect
         self.delegate = self
     }
     
