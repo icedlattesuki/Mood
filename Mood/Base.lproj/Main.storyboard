@@ -19,11 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HistoryMoodTableViewCell" rowHeight="175" id="5bC-JN-NTX" customClass="HistoryMoodTableViewCell" customModule="Mood" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="175"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HistoryMoodTableViewCell" rowHeight="210" id="5bC-JN-NTX" customClass="HistoryMoodTableViewCell" customModule="Mood" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="210"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5bC-JN-NTX" id="4XW-3t-qp7">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -37,10 +37,22 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="心情卡片" id="MU5-Z4-bDs">
+                        <barButtonItem key="leftBarButtonItem" image="设置" id="b58-vj-D2b">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="JtC-za-VKK" kind="show" id="WPh-1u-HtL"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="W3d-51-zat">
-                            <color key="tintColor" red="0.10196078431372549" green="0.73725490196078436" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="addMood:" destination="mXQ-z8-one" id="RHn-UV-tok"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Wiv-R9-zbz" kind="presentation" identifier="addMood" id="rxN-IJ-eUE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKd-61-fhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -59,39 +71,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="tY5-ln-oOH">
-                                <rect key="frame" x="16" y="130" width="343" height="387"/>
+                                <rect key="frame" x="16" y="144" width="343" height="373"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="PUl-uL-wJb">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="135"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="75"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日心情" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIf-MW-7Xj">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日心情" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIf-MW-7Xj" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="aaH-uK-cLE"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="L0W-Dk-6YP" customClass="MoodControl" customModule="Mood" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="40" width="343" height="95"/>
+                                                <rect key="frame" x="0.0" y="40" width="343" height="35"/>
                                             </stackView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4jo-St-DPV">
-                                        <rect key="frame" x="0.0" y="175" width="343" height="212"/>
+                                        <rect key="frame" x="0.0" y="115" width="343" height="258"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="写给自己的一段话" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsx-vQ-vKa">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天想说..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsx-vQ-vKa" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="iCf-av-eTD"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="T5K-Ow-8S5" customClass="TextViewExtension" customModule="Mood" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="40" width="343" height="172"/>
+                                                <rect key="frame" x="0.0" y="40" width="343" height="218"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -100,7 +112,7 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="4jo-St-DPV" firstAttribute="top" secondItem="tY5-ln-oOH" secondAttribute="top" constant="175" id="Rqd-bQ-Gic"/>
+                                    <constraint firstItem="4jo-St-DPV" firstAttribute="top" secondItem="tY5-ln-oOH" secondAttribute="top" constant="115" id="Rqd-bQ-Gic"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -108,30 +120,32 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="tY5-ln-oOH" secondAttribute="trailing" id="Ehr-VD-aIH"/>
                             <constraint firstItem="wNY-NE-ccx" firstAttribute="top" secondItem="tY5-ln-oOH" secondAttribute="bottom" constant="150" id="Mjt-Kt-igP"/>
-                            <constraint firstItem="tY5-ln-oOH" firstAttribute="top" secondItem="R7y-XF-mTu" secondAttribute="bottom" constant="110" id="Phy-Zv-01I"/>
+                            <constraint firstItem="tY5-ln-oOH" firstAttribute="top" secondItem="R7y-XF-mTu" secondAttribute="bottom" constant="80" id="Phy-Zv-01I"/>
                             <constraint firstItem="tY5-ln-oOH" firstAttribute="leading" secondItem="9xm-rm-fNQ" secondAttribute="leadingMargin" id="qXm-GG-8jI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="添加心情" id="Kpe-xX-pf7">
-                        <barButtonItem key="leftBarButtonItem" title="取消" id="01Q-Jt-lZN">
+                        <barButtonItem key="leftBarButtonItem" image="取消" id="wWK-ir-KOr">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="cancel:" destination="2uH-gn-TpH" id="ozi-y2-4UC"/>
+                                <action selector="cancel:" destination="2uH-gn-TpH" id="seM-Og-ERe"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="5OM-qV-cIx">
+                        <barButtonItem key="rightBarButtonItem" image="保存" id="Cse-B0-gLG">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="save:" destination="2uH-gn-TpH" id="Lgt-aF-14k"/>
+                                <action selector="save:" destination="2uH-gn-TpH" id="jAy-5C-PTb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="moodControl" destination="L0W-Dk-6YP" id="NJH-80-pxU"/>
-                        <outlet property="textField" destination="T5K-Ow-8S5" id="c0v-WG-J7c"/>
+                        <outlet property="moodControl" destination="L0W-Dk-6YP" id="mRD-Of-Zj0"/>
+                        <outlet property="textField" destination="T5K-Ow-8S5" id="acw-6H-V4t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34Y-zd-pBb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3720.8000000000002" y="253.2233883058471"/>
+            <point key="canvasLocation" x="4660" y="253.2233883058471"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="orS-rP-tmS">
@@ -146,8 +160,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="a1L-TD-Z0t" kind="relationship" relationship="viewControllers" id="MR2-qJ-Qmx"/>
-                        <segue destination="7Pk-9v-Dih" kind="relationship" relationship="viewControllers" id="aSc-EF-I9h"/>
-                        <segue destination="Bqi-1U-UTF" kind="relationship" relationship="viewControllers" id="ZE2-Ji-UIO"/>
+                        <segue destination="CBP-4g-azE" kind="relationship" relationship="viewControllers" id="R3o-dK-Hd2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gfs-Bq-RaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -209,10 +222,10 @@
                                     <action selector="signIn:" destination="qhD-Zi-WGe" eventType="touchUpInside" id="Rdp-DK-HQd"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mood" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtN-k0-KLT">
-                                <rect key="frame" x="150.5" y="119.5" width="75.5" height="39.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mood" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtN-k0-KLT" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
+                                <rect key="frame" x="26" y="119.5" width="323" height="39.5"/>
                                 <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="28"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.10196078431372549" green="0.73725490196078436" blue="0.61176470588235299" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYk-DE-Dnd" customClass="ButtonExtension" customModule="Mood" customModuleProvider="target">
@@ -234,18 +247,20 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Y8P-Eg-YaC" secondAttribute="trailing" id="26I-Rz-XTC"/>
                             <constraint firstItem="Y8P-Eg-YaC" firstAttribute="top" secondItem="d5Z-N2-hkS" secondAttribute="bottom" constant="230" id="4id-TC-o1e"/>
-                            <constraint firstItem="YtN-k0-KLT" firstAttribute="centerX" secondItem="s45-gB-PSc" secondAttribute="centerX" id="AHk-Ue-ABg"/>
-                            <constraint firstItem="Y8P-Eg-YaC" firstAttribute="top" secondItem="YtN-k0-KLT" secondAttribute="bottom" constant="91" id="FGd-yx-agv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YtN-k0-KLT" secondAttribute="trailing" constant="10" id="LZb-Rh-8uA"/>
                             <constraint firstItem="CYk-DE-Dnd" firstAttribute="top" secondItem="1Eg-PH-XoG" secondAttribute="bottom" constant="25" id="MAT-hZ-8a2"/>
                             <constraint firstItem="1Eg-PH-XoG" firstAttribute="top" secondItem="Y8P-Eg-YaC" secondAttribute="bottom" constant="57" id="PXx-DU-0Qq"/>
+                            <constraint firstItem="YtN-k0-KLT" firstAttribute="leading" secondItem="s45-gB-PSc" secondAttribute="leadingMargin" constant="10" id="eze-RI-hzo"/>
                             <constraint firstItem="CYk-DE-Dnd" firstAttribute="leading" secondItem="s45-gB-PSc" secondAttribute="leadingMargin" constant="20" id="idE-4k-5ng"/>
                             <constraint firstItem="Y8P-Eg-YaC" firstAttribute="leading" secondItem="s45-gB-PSc" secondAttribute="leadingMargin" id="iw3-Y0-oi0"/>
                             <constraint firstItem="1Eg-PH-XoG" firstAttribute="leading" secondItem="s45-gB-PSc" secondAttribute="leadingMargin" constant="20" id="j8C-rl-Wj7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1Eg-PH-XoG" secondAttribute="trailing" constant="20" id="khw-ly-Ptl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CYk-DE-Dnd" secondAttribute="trailing" constant="20" id="w32-5Q-euq"/>
+                            <constraint firstItem="YtN-k0-KLT" firstAttribute="top" secondItem="d5Z-N2-hkS" secondAttribute="bottom" constant="99.5" id="xig-zN-ORe"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="moodLabel" destination="YtN-k0-KLT" id="m5s-mw-Zzf"/>
                         <outlet property="passwordTextField" destination="oQI-Qp-gnm" id="bB4-w1-ssm"/>
                         <outlet property="userNameTextField" destination="vvo-fy-7VC" id="DaN-rf-Ptv"/>
                         <segue destination="WNF-o8-2ts" kind="show" identifier="signIn" id="7rU-im-YWa"/>
@@ -267,14 +282,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mood" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PdT-ij-t02">
-                                <rect key="frame" x="150.5" y="119.5" width="75.5" height="39.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mood" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PdT-ij-t02" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
+                                <rect key="frame" x="26" y="120" width="323" height="39.5"/>
                                 <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="28"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.10196078431372549" green="0.73725490196078436" blue="0.61176470588235299" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="0N7-ab-Zhs">
-                                <rect key="frame" x="30" y="226" width="315" height="230"/>
+                                <rect key="frame" x="30" y="225.5" width="315" height="230"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="edH-a0-Tkm" userLabel="email" customClass="TextField" customModule="Material">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="35"/>
@@ -332,32 +347,26 @@
                                     <action selector="back:" destination="rO9-wh-jc1" eventType="touchUpInside" id="PcI-vi-uNX"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sign up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2N-o0-D2x">
-                                <rect key="frame" x="158.5" y="38" width="58" height="24"/>
-                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PdT-ij-t02" firstAttribute="centerX" secondItem="VEB-ac-zDH" secondAttribute="centerX" id="3wJ-2E-CXA"/>
-                            <constraint firstItem="PdT-ij-t02" firstAttribute="top" secondItem="E7N-X0-SuR" secondAttribute="bottom" constant="99.5" id="Dln-gH-czw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PdT-ij-t02" secondAttribute="trailing" constant="10" id="3mn-gJ-OLV"/>
+                            <constraint firstItem="PdT-ij-t02" firstAttribute="leading" secondItem="VEB-ac-zDH" secondAttribute="leadingMargin" constant="10" id="P71-QY-RE6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aYB-0p-pNn" secondAttribute="trailing" constant="120" id="Rej-mh-zcV"/>
                             <constraint firstItem="Qn3-ff-jKP" firstAttribute="leading" secondItem="VEB-ac-zDH" secondAttribute="leadingMargin" constant="5" id="a2y-1T-gKl"/>
-                            <constraint firstItem="0N7-ab-Zhs" firstAttribute="top" secondItem="PdT-ij-t02" secondAttribute="bottom" constant="67" id="bVf-Ak-Djy"/>
                             <constraint firstItem="Qn3-ff-jKP" firstAttribute="top" secondItem="E7N-X0-SuR" secondAttribute="bottom" constant="20" id="ebZ-Ej-cSm"/>
+                            <constraint firstItem="0N7-ab-Zhs" firstAttribute="top" secondItem="PdT-ij-t02" secondAttribute="bottom" constant="66" id="evo-Xa-g4F"/>
                             <constraint firstItem="0N7-ab-Zhs" firstAttribute="leading" secondItem="VEB-ac-zDH" secondAttribute="leading" constant="30" id="ey8-bb-MbK"/>
                             <constraint firstAttribute="trailing" secondItem="0N7-ab-Zhs" secondAttribute="trailing" constant="30" id="iEM-DK-EOd"/>
-                            <constraint firstItem="p2N-o0-D2x" firstAttribute="centerX" secondItem="VEB-ac-zDH" secondAttribute="centerX" id="msm-6M-dbp"/>
-                            <constraint firstItem="p2N-o0-D2x" firstAttribute="top" secondItem="E7N-X0-SuR" secondAttribute="bottom" constant="18" id="wjz-qM-EuQ"/>
                             <constraint firstItem="aYB-0p-pNn" firstAttribute="top" secondItem="0N7-ab-Zhs" secondAttribute="bottom" constant="54.5" id="x04-vw-Awt"/>
                             <constraint firstItem="aYB-0p-pNn" firstAttribute="leading" secondItem="VEB-ac-zDH" secondAttribute="leadingMargin" constant="120" id="zgk-f7-hLK"/>
+                            <constraint firstItem="PdT-ij-t02" firstAttribute="top" secondItem="E7N-X0-SuR" secondAttribute="bottom" constant="99.5" id="zza-zJ-fBv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="sign up" id="vln-yf-eUx"/>
                     <connections>
                         <outlet property="emailTextField" destination="KUw-OH-YQg" id="BCM-Wp-jjC"/>
+                        <outlet property="moodLabel" destination="PdT-ij-t02" id="M3k-UX-NhR"/>
                         <outlet property="password1TextField" destination="Aag-hb-h3l" id="0mB-y4-vmz"/>
                         <outlet property="password2TextField" destination="lFP-Co-E8O" id="uPe-w0-enH"/>
                         <outlet property="userNameTextField" destination="edH-a0-Tkm" id="Ebs-4V-7BS"/>
@@ -380,11 +389,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="设置" image="设置" id="9IL-ah-BDn"/>
+                    <navigationItem key="navigationItem" title="设置" id="542-NN-1IY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcG-kC-ome" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-473" y="1318"/>
+            <point key="canvasLocation" x="3928.8000000000002" y="-553.67316341829087"/>
         </scene>
         <!--心情数据-->
         <scene sceneID="l5F-WP-Uzk">
@@ -399,10 +408,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MtV-gx-ZAI">
-                                <rect key="frame" x="16" y="64" width="288" height="787"/>
+                                <rect key="frame" x="16" y="0.0" width="288" height="851"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yAY-Y5-Z5s">
-                                        <rect key="frame" x="0.0" y="-64" width="288" height="800"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="700"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前心情分" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24o-hi-SKT">
                                                 <rect key="frame" x="0.0" y="22" width="288" height="30"/>
@@ -466,7 +475,7 @@
                                             <constraint firstItem="XVO-15-wAB" firstAttribute="top" secondItem="DS1-qq-nmn" secondAttribute="bottom" constant="45" id="NvJ-hg-JSf"/>
                                             <constraint firstItem="Mdw-HN-all" firstAttribute="leading" secondItem="yAY-Y5-Z5s" secondAttribute="leading" id="Pht-5D-QiR"/>
                                             <constraint firstItem="24o-hi-SKT" firstAttribute="top" secondItem="yAY-Y5-Z5s" secondAttribute="top" constant="22" id="UJH-oE-LB1"/>
-                                            <constraint firstAttribute="height" constant="800" id="aPn-ZV-jY9"/>
+                                            <constraint firstAttribute="height" constant="700" id="aPn-ZV-jY9"/>
                                             <constraint firstItem="DS1-qq-nmn" firstAttribute="leading" secondItem="yAY-Y5-Z5s" secondAttribute="leading" id="b7M-fV-Lhg"/>
                                             <constraint firstAttribute="trailing" secondItem="jHm-XK-hel" secondAttribute="trailing" id="dCN-9L-gG2"/>
                                             <constraint firstAttribute="trailing" secondItem="DS1-qq-nmn" secondAttribute="trailing" id="fd9-Qq-BwR"/>
@@ -482,7 +491,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="yAY-Y5-Z5s" firstAttribute="centerX" secondItem="MtV-gx-ZAI" secondAttribute="centerX" id="Aa7-hD-dje"/>
-                                    <constraint firstItem="yAY-Y5-Z5s" firstAttribute="top" secondItem="MtV-gx-ZAI" secondAttribute="top" constant="-64" id="LSP-7O-APh"/>
+                                    <constraint firstItem="yAY-Y5-Z5s" firstAttribute="top" secondItem="MtV-gx-ZAI" secondAttribute="top" id="LSP-7O-APh"/>
                                     <constraint firstAttribute="trailing" secondItem="yAY-Y5-Z5s" secondAttribute="trailing" id="WDa-Qs-zUH"/>
                                     <constraint firstItem="yAY-Y5-Z5s" firstAttribute="leading" secondItem="MtV-gx-ZAI" secondAttribute="leading" id="awJ-eR-Aii"/>
                                     <constraint firstAttribute="bottom" secondItem="yAY-Y5-Z5s" secondAttribute="bottom" id="hla-eE-fEE"/>
@@ -492,7 +501,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="MtV-gx-ZAI" firstAttribute="leading" secondItem="OSv-Du-hLl" secondAttribute="leadingMargin" id="27L-ea-8b4"/>
-                            <constraint firstItem="MtV-gx-ZAI" firstAttribute="top" secondItem="Ltj-cy-A4E" secondAttribute="bottom" id="VRv-hT-ZfD"/>
+                            <constraint firstItem="MtV-gx-ZAI" firstAttribute="top" secondItem="Ltj-cy-A4E" secondAttribute="bottom" constant="-64" id="VRv-hT-ZfD"/>
                             <constraint firstItem="4OW-Mq-WjD" firstAttribute="top" secondItem="MtV-gx-ZAI" secondAttribute="bottom" id="ZpA-fi-bqO"/>
                             <constraint firstItem="MtV-gx-ZAI" firstAttribute="centerX" secondItem="OSv-Du-hLl" secondAttribute="centerX" id="a4T-6b-44P"/>
                             <constraint firstItem="MtV-gx-ZAI" firstAttribute="trailing" secondItem="OSv-Du-hLl" secondAttribute="trailingMargin" id="j7L-kk-Mmh"/>
@@ -511,34 +520,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7PS-jO-uwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1487.2" y="1168.5157421289357"/>
-        </scene>
-        <!--心情数据-->
-        <scene sceneID="dZf-pW-sUm">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bg4-in-Jct" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Pk-9v-Dih" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="心情数据" image="数据分析" id="ojr-EU-cQY"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ZIO-A0-ZFe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="IPr-js-osa" kind="relationship" relationship="rootViewController" id="voM-FT-vFD"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="548" y="1168.0659670164919"/>
+            <point key="canvasLocation" x="4304" y="1168.5157421289357"/>
         </scene>
         <!--心情卡片-->
         <scene sceneID="gdq-nw-zzl">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a1L-TD-Z0t" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a1L-TD-Z0t" customClass="AppNavigationController" customModule="Mood" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="心情卡片" image="心情卡片" id="uUC-H7-pZC"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="SLK-ZS-73g">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SLK-ZS-73g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -551,8 +541,72 @@
             </objects>
             <point key="canvasLocation" x="1485.5999999999999" y="251.42428785607197"/>
         </scene>
+        <!--App Navigation Controller-->
+        <scene sceneID="5ET-ig-yse">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wiv-R9-zbz" customClass="AppNavigationController" customModule="Mood" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NHi-4W-a97">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i3X-Ve-ApB">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="2uH-gn-TpH" kind="relationship" relationship="rootViewController" id="4pi-Cd-z3T"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bmt-vS-yxJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3720.8000000000002" y="253.2233883058471"/>
+        </scene>
+        <!--心情数据-->
+        <scene sceneID="sow-qy-ZTe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CBP-4g-azE" customClass="AppNavigationController" customModule="Mood" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="心情数据" image="数据分析" id="vcU-8K-ei0"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="39U-kF-56S">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="IPr-js-osa" kind="relationship" relationship="rootViewController" id="hyf-Hz-4TX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CQb-a7-jsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3364" y="1168.0659670164919"/>
+        </scene>
+        <!--Side Menu Navigation Controller-->
+        <scene sceneID="pVq-6w-0MV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JtC-za-VKK" customClass="SideMenuNavigationController" customModule="Mood" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g9S-kU-hwM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftSide" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="Bqi-1U-UTF" kind="relationship" relationship="rootViewController" id="NoV-CD-0i2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jge-nk-eck" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3188" y="-554"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="保存" width="37" height="37"/>
+        <image name="取消" width="37" height="37"/>
         <image name="心情卡片" width="25" height="25"/>
         <image name="数据分析" width="25" height="25"/>
         <image name="设置" width="25" height="25"/>
