@@ -7,16 +7,20 @@
 //
 
 import UIKit
+import Material
+import SCLAlertView
 
 class AddMoodViewController: UIViewController {
     
     //MARK: Properties
     
     @IBOutlet weak var moodControl: MoodControl!
-    @IBOutlet weak var textField: UITextView!
-
+    @IBOutlet weak var textField: TextViewExtension!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        hideKeyboardWhenTappedAround()
     }
     
     //MARK: Action
@@ -27,31 +31,32 @@ class AddMoodViewController: UIViewController {
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {
+        
         if moodControl.moodScore == -1 {
-            let alertController = UIAlertController(title:"保存失败!", message:"需要选定一个心情～", preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "知道啦", style: .cancel)
-            
-            alertController.addAction(alertAction)
-            present(alertController, animated: true, completion: nil)
+            let alert = SCLAlertView()
+
+            alert.showWarning("保存失败", subTitle: "需要选定一个心情~~~")
         } else {
-            let alertController = UIAlertController(title:"", message:"", preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "知道啦", style: .cancel) { action in
-                self.textField.resignFirstResponder()
-                self.dismiss(animated: true, completion: nil)
-            }
-            
-            alertController.addAction(alertAction)
+            let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
+            let alert = SCLAlertView(appearance: appearance)
+
+            alert.addButton("Done", target: self, selector: #selector(AddMoodViewController.saveSuccess))
             
             let record = Record(moodScore: moodControl.moodScore, sentence: textField.text!)
             let result = record.save()
             
             if result.success {
-                alertController.title = "保存成功!"
+                alert.showSuccess("保存成功", subTitle: "")
             } else {
-                alertController.title = "保存失败!"
+                alert.showError("保存失败", subTitle: "")
             }
-            alertController.message = ""
-            present(alertController, animated: true, completion: nil)
         }
+    }
+    
+    //MARK: Methods
+    
+    @objc private func saveSuccess() {
+        self.textField.resignFirstResponder()
+        self.dismiss(animated: true, completion: nil)
     }
 }
