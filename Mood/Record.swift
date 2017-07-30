@@ -84,4 +84,31 @@ class Record {
         
         return result
     }
+    
+    static func isAdded() -> Bool {
+        let currentDate = Date()
+        var dateCompenents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: currentDate)
+        dateCompenents.hour = 0
+        dateCompenents.minute = 0
+        dateCompenents.second = 0
+        let resDate = Calendar.current.date(from: dateCompenents)
+        
+        let query = LCQuery(className: "MoodRecords")
+        
+        if let currentUser = LCUser.current {
+            query.whereKey("email", .equalTo(currentUser.email!))
+        } else {
+            fatalError("错误！未登录")
+        }
+        query.whereKey("createdAt", .greaterThanOrEqualTo(resDate!))
+        
+        let queryResult = query.find().objects
+        
+        print(queryResult!.count)
+        if queryResult != nil && !queryResult!.isEmpty{
+            return true
+        } else {
+            return false
+        }
+    }
 }
