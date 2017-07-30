@@ -7,22 +7,27 @@
 //
 
 import UIKit
+import Material
 
 class TextViewExtension: UITextView{
     
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
-        
-        self.layer.borderWidth = 1.0
-        self.layer.borderColor = UIColor.gray.cgColor
-        self.layer.cornerRadius = 5.0
+ 
+        let color = UIColor(red: 236/255, green: 240/255, blue: 241/255, alpha: 1)
+        self.borderColor = color
+        self.borderWidth = 0.5
+        self.cornerRadius = 5
+        self.backgroundColor = color
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        self.layer.borderWidth = 1.0
-        self.layer.borderColor = UIColor.gray.cgColor
-        self.layer.cornerRadius = 5.0
+        let color = UIColor(red: 236/255, green: 240/255, blue: 241/255, alpha: 1)
+        self.borderColor = color
+        self.borderWidth = 0.5
+        self.cornerRadius = 5
+        self.backgroundColor = color
     }
 }
