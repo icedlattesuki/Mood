@@ -4,7 +4,9 @@ use_frameworks!
 
 target ‘Mood’ do
 pod 'LeanCloud'   
-pod 'Alamofire'
 pod ‘Charts’
 pod 'Material'
+pod 'LTMorphingLabel'
+pod 'SCLAlertView'
+pod 'SideMenu'
 end
