@@ -8,18 +8,23 @@
 
 import UIKit
 import Material
+import LTMorphingLabel
+import SCLAlertView
 
-class SignInViewController: UIViewController, TextFieldDelegate{
+class SignInViewController: UIViewController, TextFieldDelegate, LTMorphingLabelDelegate{
     
     //MARK: Properties
     
     @IBOutlet weak var userNameTextField: TextField!
     @IBOutlet weak var passwordTextField: TextField!
+    @IBOutlet weak var moodLabel: LTMorphingLabel!
 
     //MARK: Override functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        moodLabel.morphingEffect = .evaporate
         
         userNameTextField.placeholder = "User Name"
         passwordTextField.placeholder = "Password"
@@ -39,17 +44,14 @@ class SignInViewController: UIViewController, TextFieldDelegate{
         let userName = userNameTextField.text!
         let password = passwordTextField.text!
         
-        let alertController = UIAlertController(title: "登录失败", message: "", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "知道啦", style: .cancel, handler: nil)
-        alertController.addAction(alertAction)
+        let alert = SCLAlertView()
         
         userNameTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         
         //判断用户名或密码是否为空
         if userName == "" || password == "" {
-            alertController.message = "用户名或密码不能为空"
-            present(alertController, animated: true)
+            alert.showError("登录失败", subTitle: "用户名或密码不能为空")
             return
         }
         
@@ -63,19 +65,28 @@ class SignInViewController: UIViewController, TextFieldDelegate{
         } else {
             switch result.error {
             case .userNotExist:
-                alertController.message = "用户不存在"
+                alert.showError("登录失败", subTitle: "用户不存在")
             case .userNameAndPasswordMismatch:
-                alertController.message = "密码错误"
+                alert.showError("登录失败", subTitle: "用户名或密码错误")
             case .emailUnverified:
-                alertController.message = "邮箱未验证"
+                alert.showError("登录失败", subTitle: "邮箱未验证")
             default:
-                alertController.message = "未知错误"
+                alert.showError("登录失败", subTitle: "未知错误")
             }
-            present(alertController, animated: true)
         }
     }
 
     //MARK: TextFieldDelegate
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if moodLabel.text == "Mood" {
+            moodLabel.text = "M  o  o  d"
+        } else {
+            moodLabel.text = "Mood"
+        }
+        
+        return true
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
