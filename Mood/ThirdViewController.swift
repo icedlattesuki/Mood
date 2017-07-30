@@ -25,14 +25,22 @@ class ThirdViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        records = Record.getAllRecords()
+        self.scrollView.refreshControl = UIRefreshControl()
+        self.scrollView.refreshControl!.attributedTitle = NSAttributedString(string: "下拉刷新")
+        self.scrollView.refreshControl!.addTarget(self, action: .refresh, for: .valueChanged)
         
-        showScore()
-        setupLineChart()
-        setupPieChart()
+        refresh()
     }
     
     //MARK: Methods
+    
+    func refresh() {
+        records = Record.getAllRecords()
+        showScore()
+        setupLineChart()
+        setupPieChart()
+        self.scrollView.refreshControl!.endRefreshing()
+    }
     
     func showScore() {
         var totalScore = 0
@@ -193,4 +201,8 @@ class ThirdViewController: UIViewController {
         //关闭旋转
         pieChartView.rotationEnabled = false
     }
+}
+
+private extension Selector {
+    static let refresh = #selector(ThirdViewController.refresh)
 }
