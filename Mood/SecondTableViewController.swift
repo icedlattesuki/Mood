@@ -8,16 +8,14 @@
 
 import UIKit
 import Material
-
-private extension Selector {
-    static let loadData = #selector(SecondTableViewController.loadData)
-}
+import SCLAlertView
 
 class SecondTableViewController: UITableViewController{
     
     //MARK: Properties
     
     var records = [Record]()
+    var heights = [IndexPath: CGFloat]()
     
     //MARK: Override functions
 
@@ -49,10 +47,15 @@ class SecondTableViewController: UITableViewController{
             view.removeFromSuperview()
         }
         
-        self.setupcard(card: card, record: records[indexPath.row])
+        self.setupcard(card: card, record: records[records.count - 1 - indexPath.row])
         cell.customView.layout(card).horizontally(left: 8, right: 8).top(30)
+        heights[indexPath] = CGFloat(cell.height)
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return heights[indexPath] ?? 210
     }
     
     //MARK: Methods
@@ -134,6 +137,18 @@ class SecondTableViewController: UITableViewController{
         return image
     }
     
+    //MARK: Actions
+    
+    @IBAction func addMood(_ sender: UIBarButtonItem) {
+        if Record.isAdded() {
+            let alert = SCLAlertView()
+            alert.showWarning("今天已经记录过啦!", subTitle: "")
+        } else {
+            performSegue(withIdentifier: "addMood", sender: self)
+            present(AddMoodViewController(), animated: true, completion: nil)
+        }
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -168,5 +183,9 @@ class SecondTableViewController: UITableViewController{
         return true
     }
     */
+}
+
+private extension Selector {
+    static let loadData = #selector(SecondTableViewController.loadData)
 }
 
