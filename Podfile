@@ -9,4 +9,5 @@ pod 'Material'
 pod 'LTMorphingLabel'
 pod 'SCLAlertView'
 pod 'SideMenu'
+pod 'SQLite.swift'
 end
