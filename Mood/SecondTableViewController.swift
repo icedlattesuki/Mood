@@ -47,7 +47,7 @@ class SecondTableViewController: UITableViewController{
             view.removeFromSuperview()
         }
         
-        self.setupcard(card: card, record: records[records.count - 1 - indexPath.row])
+        self.setupcard(card: card, indexPath: indexPath)
         cell.customView.layout(card).horizontally(left: 8, right: 8).top(30)
         heights[indexPath] = CGFloat(cell.height)
         
@@ -66,13 +66,29 @@ class SecondTableViewController: UITableViewController{
         self.refreshControl!.endRefreshing()
     }
     
-    private func setupcard(card: Card, record: Record) {
+    func deleteRecord(_ sender: UIButton) {
+        let index = sender.tag
+        let row = records.count - 1 - index
+        
+        if records[index].remove().success {
+            records.remove(at: index)
+            
+            let indexPath = IndexPath(row: row, section: 0)
+            
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        }
+    }
+    
+    private func setupcard(card: Card, indexPath: IndexPath) {
+        let index = records.count - 1 - indexPath.row
+        let record = records[index]
+        
         let toolbar = Toolbar()
         
         toolbar.title = "Mood"
         toolbar.titleLabel.textAlignment = .left
         
-        toolbar.detail = "记录每日心情"
+        toolbar.detail = "记录.心情"
         toolbar.detailLabel.textAlignment = .left
         toolbar.detailLabel.textColor = Color.blueGrey.base
         
@@ -91,7 +107,7 @@ class SecondTableViewController: UITableViewController{
         
         card.contentView = contentView
         
-        let bootombar = Bar()
+        let bottombar = Bar()
         let dateLabel = UILabel()
         let dateFormatter = DateFormatter()
         
@@ -102,14 +118,23 @@ class SecondTableViewController: UITableViewController{
         dateLabel.font = RobotoFont.regular(with: 12)
         dateLabel.text = dateFormatter.string(from: record.createdAt)
         
-        bootombar.leftViews = [dateLabel]
+        bottombar.leftViews = [dateLabel]
         
-        card.bottomBar = bootombar
+        let deleteButton = UIButton()
+        
+        deleteButton.setImage(UIImage(named: "删除") , for: .normal)
+        deleteButton.addTarget(self, action: .deleteRecord, for: .touchUpInside)
+        deleteButton.tag = index
+        
+        bottombar.rightViews = [deleteButton]
+        
+        card.bottomBar = bottombar
         
         card.toolbarEdgeInsetsPreset = .wideRectangle2
         card.contentViewEdgeInsetsPreset = .wideRectangle2
         card.contentViewEdgeInsets.left = 12
         card.bottomBarEdgeInsetsPreset = .wideRectangle2
+        card.bottomBarEdgeInsets.right = 8
         
         card.borderWidth = 0.1
     }
@@ -148,44 +173,10 @@ class SecondTableViewController: UITableViewController{
             present(AddMoodViewController(), animated: true, completion: nil)
         }
     }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 }
 
 private extension Selector {
     static let loadData = #selector(SecondTableViewController.loadData)
+    static let deleteRecord = #selector(SecondTableViewController.deleteRecord(_:))
 }
 
