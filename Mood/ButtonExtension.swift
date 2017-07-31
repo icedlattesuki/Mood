@@ -8,16 +8,32 @@
 
 import UIKit
 
-class ButtonExtension: UIButton {
+@IBDesignable class ButtonExtension: UIButton {
+    @IBInspectable var color: UIColor = UIColor(red: ThemeColor.red, green: ThemeColor.green, blue: ThemeColor.blue, alpha: 1) {
+        didSet {
+            update()
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.layer.cornerRadius = 17
+        update()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        self.layer.cornerRadius = 17
+        update()
+    }
+    
+    //MARK: Methods
+    
+    func update() {
+        self.backgroundColor = UIColor.white
+        self.borderWidth = 1.5
+        self.borderColor = color
+        self.layer.cornerRadius = 5
+        self.setTitleColor(color, for: .normal)
     }
 }
