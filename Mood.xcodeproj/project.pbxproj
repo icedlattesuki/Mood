@@ -25,7 +25,11 @@
 		0056133A1F2C2FB9006ADF72 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005613391F2C2FB9006ADF72 /* FirstViewController.swift */; };
 		0056133E1F2C88C6006ADF72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0056133D1F2C88C6006ADF72 /* Assets.xcassets */; };
 		005613421F2CA074006ADF72 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005613411F2CA074006ADF72 /* UIViewControllerExtension.swift */; };
-		005613441F2CDA4F006ADF72 /* AppToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005613431F2CDA4F006ADF72 /* AppToolbarController.swift */; };
+		005613481F2E05C7006ADF72 /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005613471F2E05C7006ADF72 /* ThemeColor.swift */; };
+		0056134A1F2E0717006ADF72 /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005613491F2E0717006ADF72 /* AppNavigationController.swift */; };
+		0056134C1F2E355C006ADF72 /* SideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0056134B1F2E355C006ADF72 /* SideMenuNavigationController.swift */; };
+		0056134E1F2EE486006ADF72 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0056134D1F2EE486006ADF72 /* SettingViewController.swift */; };
+		005613541F2F5FE4006ADF72 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005613531F2F5FE4006ADF72 /* Setting.swift */; };
 		00E3E0B81F1F93580041AD21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E3E0B71F1F93580041AD21 /* AppDelegate.swift */; };
 		00E3E0BD1F1F93580041AD21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00E3E0BB1F1F93580041AD21 /* Main.storyboard */; };
 		00E3E0C21F1F93580041AD21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00E3E0C01F1F93580041AD21 /* LaunchScreen.storyboard */; };
@@ -64,7 +68,11 @@
 		005613391F2C2FB9006ADF72 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		0056133D1F2C88C6006ADF72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		005613411F2CA074006ADF72 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
-		005613431F2CDA4F006ADF72 /* AppToolbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppToolbarController.swift; sourceTree = "<group>"; };
+		005613471F2E05C7006ADF72 /* ThemeColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
+		005613491F2E0717006ADF72 /* AppNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
+		0056134B1F2E355C006ADF72 /* SideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuNavigationController.swift; sourceTree = "<group>"; };
+		0056134D1F2EE486006ADF72 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		005613531F2F5FE4006ADF72 /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		00E3E0B41F1F93580041AD21 /* Mood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E3E0B71F1F93580041AD21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00E3E0BC1F1F93580041AD21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -141,12 +149,16 @@
 				00099B691F21D62F00A39CB8 /* TextFieldExtension.swift */,
 				002957581F2AD05D001D2E84 /* TextViewExtension.swift */,
 				002957531F2AD05D001D2E84 /* LabelExtension.swift */,
+				005613411F2CA074006ADF72 /* UIViewControllerExtension.swift */,
 				002957621F2B2032001D2E84 /* MyFormatter.swift */,
+				005613471F2E05C7006ADF72 /* ThemeColor.swift */,
 				00E3E0C01F1F93580041AD21 /* LaunchScreen.storyboard */,
 				00E3E0C31F1F93580041AD21 /* Info.plist */,
 				0056133D1F2C88C6006ADF72 /* Assets.xcassets */,
-				005613411F2CA074006ADF72 /* UIViewControllerExtension.swift */,
-				005613431F2CDA4F006ADF72 /* AppToolbarController.swift */,
+				005613491F2E0717006ADF72 /* AppNavigationController.swift */,
+				0056134B1F2E355C006ADF72 /* SideMenuNavigationController.swift */,
+				0056134D1F2EE486006ADF72 /* SettingViewController.swift */,
+				005613531F2F5FE4006ADF72 /* Setting.swift */,
 			);
 			path = Mood;
 			sourceTree = "<group>";
@@ -333,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0056134A1F2E0717006ADF72 /* AppNavigationController.swift in Sources */,
 				002957611F2AD05D001D2E84 /* ThirdViewController.swift in Sources */,
 				00E3E0DA1F20E0C90041AD21 /* MoodControl.swift in Sources */,
 				00099B6C1F21F0D800A39CB8 /* SignUpViewController.swift in Sources */,
@@ -342,13 +355,16 @@
 				00099B701F243C7300A39CB8 /* User.swift in Sources */,
 				00099B721F24730800A39CB8 /* SignInViewController.swift in Sources */,
 				0029575F1F2AD05D001D2E84 /* SecondTableViewController.swift in Sources */,
-				005613441F2CDA4F006ADF72 /* AppToolbarController.swift in Sources */,
+				005613481F2E05C7006ADF72 /* ThemeColor.swift in Sources */,
 				00099B6A1F21D62F00A39CB8 /* TextFieldExtension.swift in Sources */,
 				002957631F2B2032001D2E84 /* MyFormatter.swift in Sources */,
+				005613541F2F5FE4006ADF72 /* Setting.swift in Sources */,
 				0056133A1F2C2FB9006ADF72 /* FirstViewController.swift in Sources */,
 				0029575D1F2AD05D001D2E84 /* Record.swift in Sources */,
+				0056134C1F2E355C006ADF72 /* SideMenuNavigationController.swift in Sources */,
 				0029575B1F2AD05D001D2E84 /* LabelExtension.swift in Sources */,
 				00E3E0D81F20AD0B0041AD21 /* MainTabBarController.swift in Sources */,
+				0056134E1F2EE486006ADF72 /* SettingViewController.swift in Sources */,
 				00E3E0B81F1F93580041AD21 /* AppDelegate.swift in Sources */,
 				005613421F2CA074006ADF72 /* UIViewControllerExtension.swift in Sources */,
 				0029575A1F2AD05D001D2E84 /* HistoryMoodTableViewCell.swift in Sources */,
