@@ -14,6 +14,7 @@ class Record {
     
     //MARK: Properties
     
+    var objId: String!
     var moodScore: Int
     var sentence: String
     var createdAt: Date!
@@ -25,7 +26,8 @@ class Record {
         self.sentence = sentence
     }
     
-    private init(moodScore: Int, sentence: String, createdAt: Date) {
+    private init(objId: String, moodScore: Int, sentence: String, createdAt: Date) {
+        self.objId = objId
         self.moodScore = moodScore
         self.sentence = sentence
         self.createdAt = createdAt
@@ -35,6 +37,7 @@ class Record {
     
     func save() -> Result {
         var result = Result()
+        
         if let currentUser = LCUser.current {
             let email = currentUser.email
             let moodRecords = LCObject(className: "MoodRecords")
@@ -49,6 +52,21 @@ class Record {
                 result.success = true
             }
         }
+        
+        return result
+    }
+    
+    func remove() -> Result {
+        var result = Result()
+        let object = LCObject(className: "MoodRecords", objectId: objId)
+        
+        let LCResult = object.delete()
+        
+        if LCResult.isSuccess {
+            result.success = true
+            print("OK")
+        }
+        
         return result
     }
     
@@ -63,6 +81,7 @@ class Record {
         } else {
             fatalError("错误！未登录")
         }
+        query.whereKey("objectId", .selected)
         query.whereKey("moodScore", .selected)
         query.whereKey("createdAt", .selected)
         query.whereKey("sentence", .selected)
@@ -72,11 +91,12 @@ class Record {
         
         if queryResult != nil {
             for object in queryResult! {
+                let objectId = object.objectId!.stringValue!
                 let objectMoodScore = object.get("moodScore")!.intValue!
                 let objectSentence = object.get("sentence")!.stringValue!
                 let objectCreatedAt = object.createdAt!.dateValue!
                 
-                let record = Record(moodScore: objectMoodScore, sentence: objectSentence, createdAt: objectCreatedAt)
+                let record = Record(objId: objectId, moodScore: objectMoodScore, sentence: objectSentence, createdAt: objectCreatedAt)
                 
                 result.append(record)
             }
@@ -104,7 +124,6 @@ class Record {
         
         let queryResult = query.find().objects
         
-        print(queryResult!.count)
         if queryResult != nil && !queryResult!.isEmpty{
             return true
         } else {
