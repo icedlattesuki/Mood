@@ -31,6 +31,11 @@ class SignInViewController: UIViewController, TextFieldDelegate, LTMorphingLabel
         userNameTextField.delegate = self
         passwordTextField.delegate = self
         
+        if let user = User.getUser() {
+            userNameTextField.text = user.0
+            passwordTextField.text = user.1
+        }
+        
         hideKeyboardWhenTappedAround()
     }
 
@@ -60,8 +65,9 @@ class SignInViewController: UIViewController, TextFieldDelegate, LTMorphingLabel
         let result = user.signIn()
         
         if result.success {
-            performSegue(withIdentifier: "signIn", sender: self)
-            present(MainTabBarController(), animated: true)
+            user.save()
+            
+            performSegue(withIdentifier: "signIn", sender: nil)
         } else {
             switch result.error {
             case .userNotExist:
@@ -71,9 +77,14 @@ class SignInViewController: UIViewController, TextFieldDelegate, LTMorphingLabel
             case .emailUnverified:
                 alert.showError("登录失败", subTitle: "邮箱未验证")
             default:
-                alert.showError("登录失败", subTitle: "未知错误")
+                alert.showError("登录失败", subTitle: "网络连接超时")
             }
         }
+    }
+    
+    //Unwind segue
+    @IBAction func signOut(segue: UIStoryboardSegue) {
+        
     }
 
     //MARK: TextFieldDelegate
