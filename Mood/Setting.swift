@@ -37,22 +37,19 @@ class Setting {
     
     //MARK: Methods
     
-    func update() -> Bool {
+    func update() {
         do {
             try Setting.checkout()
-            
+
             try Setting.db.run(Setting.currentSetting.update(Setting.showLatestDataAttribute <- showLatestData, Setting.timeSortAttribute <- timeSort, Setting.showAllDataAttribute <- showAllData))
-            
-            return true
         } catch {
             
         }
-        return false
     }
     
     //MARK: Static Methods
     
-    static func getMoodCardSetting() -> (Bool,Bool,Bool)? {
+    static func getSetting() -> (Bool,Bool,Bool)? {
         do {
             try checkout()
             
@@ -70,9 +67,9 @@ class Setting {
             if db == nil {
                 db = try Connection("\(documentPath)/db.sqlite3")
             }
-            
-            try db.execute("create table if not exist Setting(email: Text primary key, showLatestData: bool, timeSort: bool, showAllData: bool)")
-            
+
+            try db.execute("create table if not exists Setting(email text primary key, showLatestData bool, timeSort bool, showAllData bool)")
+
             if try db.scalar(currentSetting.count) == 0 {
                 let insert = setting.insert(emailAttribute <- email, showLatestDataAttribute <- false, timeSortAttribute <- false, showAllDataAttribute <- false)
                 
