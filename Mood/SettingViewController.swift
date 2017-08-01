@@ -22,27 +22,37 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showLatestDataSwitch.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
-        timeSortSwitch.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
-        showAllDataSwitch.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
+        let x = CGFloat(0.65)
+        let y = CGFloat(0.65)
+        
+        showLatestDataSwitch.transform = CGAffineTransform(scaleX: x, y: y)
+        timeSortSwitch.transform = CGAffineTransform(scaleX: x, y: y)
+        showAllDataSwitch.transform = CGAffineTransform(scaleX: x, y: y)
         
         showLatestDataSwitch.addTarget(self, action: .switchChanged, for: .valueChanged)
         timeSortSwitch.addTarget(self, action: .switchChanged, for: .valueChanged)
         showAllDataSwitch.addTarget(self, action: .switchChanged, for: .valueChanged)
+        
+        if let setting = Setting.getSetting() {
+            showLatestDataSwitch.setOn(setting.0, animated: true)
+            timeSortSwitch.setOn(setting.1, animated: true)
+            showAllDataSwitch.setOn(setting.2, animated: true)
+        }
     }
     
     //MARK: Methods
     
     func switchChanged() {
-        let prevSatuc = [showLatestDataSwitch.isOn, timeSortSwitch.isOn, showAllDataSwitch.isOn]
         let setting = Setting(showLatestData: showLatestDataSwitch.isOn, timeSort: timeSortSwitch.isOn, showAllData: showAllDataSwitch.isOn)
         
-        if !setting.update() {
-            
-            showLatestDataSwitch.setOn(prevSatuc[0], animated: true)
-            timeSortSwitch.setOn(prevSatuc[1], animated: true)
-            showAllDataSwitch.setOn(prevSatuc[2], animated: true)
-        }
+        setting.update()
+    }
+    
+    //MARK: Actions
+    
+    @IBAction func signOut(_ sender: ButtonExtension) {
+        User.signOut()
+        performSegue(withIdentifier: "signOut", sender: nil)
     }
 }
 
