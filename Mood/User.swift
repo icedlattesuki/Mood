@@ -8,6 +8,7 @@
 
 import UIKit
 import LeanCloud
+import SQLite
 
 //用户类
 class User {
@@ -17,6 +18,12 @@ class User {
     var userName: String!
     var email: String!
     var password: String!
+    static let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+    static var db: Connection!
+    static let users = Table("Users")
+    static let userNameAttribute = Expression<String>("userName")
+    static let passwordAttribute = Expression<String>("password")
+    static let countAttribute = Expression<Int>("count")
     
     //MARK: Initialization
     
@@ -87,5 +94,66 @@ class User {
         }
         
         return result
+    }
+    
+    static func signOut() {
+        LCUser.current = nil
+    }
+    
+    func save() {
+        do {
+            try User.checkout()
+
+            let currentUser = User.users.filter(User.userNameAttribute == userName)
+            
+            if try User.db.scalar(currentUser.count) == 0 {
+                let insert = User.users.insert(User.userNameAttribute <- userName, User.passwordAttribute <- password, User.countAttribute <- 0)
+                
+                try User.db.run(insert)
+            } else {
+                var count = 0
+                
+                for row in try User.db.prepare(currentUser) {
+                    count = row[User.countAttribute]
+                }
+                
+                try User.db.run(currentUser.update(User.countAttribute <- count + 1))
+            }
+        } catch {
+            
+        }
+    }
+    
+    static func getUser() -> (String,String)? {
+        do {
+            try checkout()
+            
+            let max = try db.scalar(users.select(countAttribute.max))
+            
+            if max == nil {
+                return nil
+            }
+            
+            let currentUser = users.filter(countAttribute == max!)
+            
+            for row in try db.prepare(currentUser) {
+                return (row[userNameAttribute],row[passwordAttribute])
+            }
+        } catch {
+            
+        }
+        return nil
+    }
+    
+    static func checkout() throws {
+        do {
+            if db == nil {
+                db = try Connection("\(documentPath)/db.sqlite3")
+            }
+
+            try db.execute("create table if not exists Users(userName text primary key, password text, count int)")
+        } catch {
+            throw error
+        }
     }
 }
