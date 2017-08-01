@@ -16,6 +16,9 @@ class SecondTableViewController: UITableViewController{
     
     var records = [Record]()
     var heights = [IndexPath: CGFloat]()
+    var showLatestData = false
+    var timeSort = false
+    var numOfToShowRecords = 0
     
     //MARK: Override functions
 
@@ -25,7 +28,7 @@ class SecondTableViewController: UITableViewController{
         self.refreshControl = UIRefreshControl()
         self.refreshControl!.attributedTitle = NSAttributedString(string: "下拉刷新")
         self.refreshControl!.addTarget(self, action: .loadData, for: .valueChanged)
-        
+
         self.loadData()
     }
 
@@ -36,7 +39,8 @@ class SecondTableViewController: UITableViewController{
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return records.count
+        numOfToShowRecords = showLatestData && records.count > 7 ? 7 : records.count
+        return numOfToShowRecords
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,25 +66,37 @@ class SecondTableViewController: UITableViewController{
     
     func loadData() {
         self.records = Record.getAllRecords()
+        
+        //更新设置
+        if let setting = Setting.getSetting() {
+            showLatestData = setting.0
+            timeSort = setting.1
+        }
+        
         self.tableView.reloadData()
+        
+        self.title = "心情卡片(\(numOfToShowRecords))"
+
         self.refreshControl!.endRefreshing()
     }
     
     func deleteRecord(_ sender: UIButton) {
         let index = sender.tag
-        let row = records.count - 1 - index
+        let row = timeSort ? index - records.count + numOfToShowRecords : records.count - 1 - index
         
         if records[index].remove().success {
-            records.remove(at: index)
-            
             let indexPath = IndexPath(row: row, section: 0)
             
+            records.remove(at: index)
+            
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            
+            self.title = "心情卡片(\(numOfToShowRecords))"
         }
     }
     
     private func setupcard(card: Card, indexPath: IndexPath) {
-        let index = records.count - 1 - indexPath.row
+        let index = timeSort ? records.count - numOfToShowRecords + indexPath.row : records.count - 1 - indexPath.row
         let record = records[index]
         
         let toolbar = Toolbar()
@@ -88,7 +104,7 @@ class SecondTableViewController: UITableViewController{
         toolbar.title = "Mood"
         toolbar.titleLabel.textAlignment = .left
         
-        toolbar.detail = "记录.心情"
+        toolbar.detail = "记录•心情"
         toolbar.detailLabel.textAlignment = .left
         toolbar.detailLabel.textColor = Color.blueGrey.base
         
