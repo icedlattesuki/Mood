@@ -56,7 +56,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKd-61-fhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2424.8000000000002" y="251.42428785607197"/>
+            <point key="canvasLocation" x="2918" y="254"/>
         </scene>
         <!--添加心情-->
         <scene sceneID="gxI-xI-NEc">
@@ -145,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34Y-zd-pBb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4985" y="1020"/>
+            <point key="canvasLocation" x="5895" y="252"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="orS-rP-tmS">
@@ -218,6 +218,11 @@
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.90588235294117647" green="0.29803921568627451" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signIn:" destination="qhD-Zi-WGe" eventType="touchUpInside" id="Rdp-DK-HQd"/>
                                 </connections>
@@ -238,6 +243,11 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="rO9-wh-jc1" kind="presentation" id="SbO-aG-Qcf"/>
                                 </connections>
@@ -336,6 +346,11 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signUp:" destination="rO9-wh-jc1" eventType="touchUpInside" id="rwp-Ug-4Bf"/>
                                 </connections>
@@ -486,6 +501,9 @@
                                         <color key="value" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signOut:" destination="Bqi-1U-UTF" eventType="touchUpInside" id="TSu-lt-buV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -503,12 +521,13 @@
                         <outlet property="showAllDataSwitch" destination="8cz-U0-YNQ" id="yGg-dI-tn0"/>
                         <outlet property="showLatestDataSwitch" destination="zLG-sQ-MrF" id="Rcq-mI-VNi"/>
                         <outlet property="timeSortSwitch" destination="lJx-9H-DwI" id="piX-mb-24v"/>
-                        <segue destination="qhD-Zi-WGe" kind="presentation" identifier="signOut" id="3a0-bE-Ppr"/>
+                        <segue destination="4kl-SL-LzQ" kind="unwind" identifier="signOut" unwindAction="signOutWithSegue:" id="0uJ-0K-J7G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcG-kC-ome" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="4kl-SL-LzQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4916" y="-651"/>
+            <point key="canvasLocation" x="4406" y="1272"/>
         </scene>
         <!--心情数据-->
         <scene sceneID="l5F-WP-Uzk">
@@ -622,11 +641,19 @@
                             <constraint firstItem="MtV-gx-ZAI" firstAttribute="trailing" secondItem="OSv-Du-hLl" secondAttribute="trailingMargin" id="j7L-kk-Mmh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="心情数据" id="TAc-j8-1cD"/>
+                    <navigationItem key="navigationItem" title="心情数据" id="TAc-j8-1cD">
+                        <barButtonItem key="leftBarButtonItem" image="设置" id="3zH-Hb-Kne">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="JtC-za-VKK" kind="show" id="DuY-c6-Iik"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="900"/>
                     <connections>
                         <outlet property="contentView" destination="yAY-Y5-Z5s" id="ZAj-Q9-hoK"/>
+                        <outlet property="lineChartLabel" destination="DS1-qq-nmn" id="rFs-af-SHZ"/>
                         <outlet property="lineChartView" destination="Mdw-HN-all" id="kUP-gv-yxb"/>
                         <outlet property="pieChartView" destination="XVO-15-wAB" id="har-br-Pt4"/>
                         <outlet property="scrollView" destination="MtV-gx-ZAI" id="Tst-aB-Htu"/>
@@ -640,10 +667,11 @@
         <!--心情卡片-->
         <scene sceneID="gdq-nw-zzl">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4tn-v0-1yl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a1L-TD-Z0t" customClass="AppNavigationController" customModule="Mood" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="心情卡片" image="心情卡片" id="uUC-H7-pZC"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="SLK-ZS-73g">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SLK-ZS-73g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -652,7 +680,6 @@
                         <segue destination="mXQ-z8-one" kind="relationship" relationship="rootViewController" id="fXl-d4-NRw"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4tn-v0-1yl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1290" y="253"/>
         </scene>
@@ -661,7 +688,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wiv-R9-zbz" customClass="AppNavigationController" customModule="Mood" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="NHi-4W-a97">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NHi-4W-a97">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -676,15 +703,16 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bmt-vS-yxJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3494" y="1020"/>
+            <point key="canvasLocation" x="4406" y="254"/>
         </scene>
         <!--心情数据-->
         <scene sceneID="sow-qy-ZTe">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CQb-a7-jsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CBP-4g-azE" customClass="AppNavigationController" customModule="Mood" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="心情数据" image="数据分析" id="vcU-8K-ei0"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="39U-kF-56S">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="39U-kF-56S">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -693,7 +721,6 @@
                         <segue destination="IPr-js-osa" kind="relationship" relationship="rootViewController" id="hyf-Hz-4TX"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CQb-a7-jsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-404" y="1273"/>
         </scene>
@@ -720,7 +747,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jge-nk-eck" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3494" y="251"/>
+            <point key="canvasLocation" x="2918" y="1272"/>
         </scene>
     </scenes>
     <resources>
@@ -731,4 +758,7 @@
         <image name="设置" width="25" height="25"/>
         <image name="返回" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="WPh-1u-HtL"/>
+    </inferredMetricsTieBreakers>
 </document>
