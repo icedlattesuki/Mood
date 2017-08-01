@@ -19,7 +19,7 @@ class SideMenuNavigationController: UISideMenuNavigationController {
         self.navigationBar.isTranslucent = true
         self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Color.white]
         
-        SideMenuManager.menuWidth = 350
+        SideMenuManager.menuWidth = 280
         SideMenuManager.menuPresentMode = .viewSlideInOut
         SideMenuManager.menuFadeStatusBar = false
     }
