@@ -1,18 +1,41 @@
 PODS:
   - Alamofire (4.2.0)
+  - Charts (3.0.2):
+    - Charts/Core (= 3.0.2)
+  - Charts/Core (3.0.2)
   - LeanCloud (10.0.2):
     - LeanCloud/Storage (= 10.0.2)
   - LeanCloud/Storage (10.0.2):
     - Alamofire (~> 4.2.0)
+  - LTMorphingLabel (0.5.0)
+  - Material (2.6.3):
+    - Material/Core (= 2.6.3)
+  - Material/Core (2.6.3)
+  - SCLAlertView (0.7.0)
+  - SideMenu (2.3.3)
+  - SQLite.swift (0.11.3):
+    - SQLite.swift/standard (= 0.11.3)
+  - SQLite.swift/standard (0.11.3)
 
 DEPENDENCIES:
-  - Alamofire
+  - Charts
   - LeanCloud
+  - LTMorphingLabel
+  - Material
+  - SCLAlertView
+  - SideMenu
+  - SQLite.swift
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
   LeanCloud: e1e54faeae61634c3b98b437415f0f3ac2837fe1
+  LTMorphingLabel: bc170be74b219b7dae0e5543a44676d16da70ff7
+  Material: af607a7ec0e9978ef85cf189a3d8ceeeb650400f
+  SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
+  SideMenu: a447554ae5c982e8077666389e1c8b0c8656e065
+  SQLite.swift: 99b36c22084427f0abbeb957556ce1528cf10bb3
 
-PODFILE CHECKSUM: c52ae9d150c984bc10defa790f28da841a42ca59
+PODFILE CHECKSUM: 8b19e942c39ebb902998acb5576d3ef2df4b5467
 
 COCOAPODS: 1.2.1
