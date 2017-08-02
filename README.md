@@ -1,6 +1,8 @@
-
+<div align=center>
 
 ![](http://olrdynjoh.bkt.clouddn.com/icon-83.5@2x.png)
+
+</div>
 
 ## Mood
 
@@ -16,7 +18,7 @@ Mood是一款心情类的app，它使你能够以一种心情+一段话的形式
 
 <div align=center>
 
-![](http://olrdynjoh.bkt.clouddn.com/IMG_2074.PNG)
+![](http://olrdynjoh.bkt.clouddn.com/IMG_2064.PNG)
 
 </div>
 
