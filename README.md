@@ -18,7 +18,7 @@ Mood是一款心情类的app，它使你能够以一种心情+一段话的形式
 
 <div align=center>
 
-![](http://olrdynjoh.bkt.clouddn.com/IMG_2064.PNG)
+![](http://olrdynjoh.bkt.clouddn.com/IMG_2088%E7%9A%84%E5%89%AF%E6%9C%AC.PNG)
 
 </div>
 
@@ -26,19 +26,31 @@ Mood是一款心情类的app，它使你能够以一种心情+一段话的形式
 
 用户的心情记录将以卡片的形式显示在app的主界面。
 
+<div align=center>
 
+![](http://olrdynjoh.bkt.clouddn.com/IMG_2090.PNG)
+
+</div>
 
 ### 心情数据
 
 用户所产生的心情数据将会以图表的形式呈现。
 
+<div align=center>
 
+![](http://olrdynjoh.bkt.clouddn.com/IMG_2089.PNG)
+
+</div>
 
 ### 用户定制
 
 用户可以通过设置界面对各个界面显示的内容进行定制。
 
+<div align=center>
 
+![](http://olrdynjoh.bkt.clouddn.com/IMG_2091.PNG)
+
+</div>
 
 ## 安装
 
