@@ -1,5 +1,5 @@
 //
-//  ThirdViewController.swift
+//  MoodDataViewController.swift
 //  Mood
 //
 //  Created by Hys on 2017/7/27.
@@ -9,7 +9,7 @@
 import UIKit
 import Charts
 
-class ThirdViewController: UIViewController {
+class MoodDataViewController: UIViewController {
     
     //MARK: Properties
     
@@ -20,9 +20,10 @@ class ThirdViewController: UIViewController {
     @IBOutlet weak var lineChartLabel: UILabel!
     @IBOutlet weak var pieChartView: PieChartView!
     var records = [Record]()
+    //趋势图是否显示全部数据(随设置变动)
     var showAllData = false
     
-    //MARK: override
+    //MARK: Override functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class ThirdViewController: UIViewController {
     //MARK: Methods
     
     func refresh() {
+        //获取所有记录数据
         records = Record.getAllRecords()
         
         //更新设置
@@ -44,9 +46,14 @@ class ThirdViewController: UIViewController {
             showAllData = setting.2
         }
         
+        //显示总分
         showScore()
+        //画趋势图
         setupLineChart()
+        //画分布图
         setupPieChart()
+        
+        //结束刷新
         self.scrollView.refreshControl!.endRefreshing()
     }
     
@@ -66,6 +73,7 @@ class ThirdViewController: UIViewController {
         
         lineChartLabel.text = showAllData ? "历史心情趋势图" : "最近7天心情趋势图"
         
+        //根据设置决定num
         let num = showAllData ? records.count : (records.count > 7 ? 7 : records.count)
 
         for index in 0..<num {
@@ -136,9 +144,9 @@ class ThirdViewController: UIViewController {
         var dataEntries = [PieChartDataEntry]()
         var days = [0,0,0,0,0,0]
         let names = ["想哭","悲伤","难过","一般","愉快","开心"]
-        let red: [Double] = [26,231,230,241,46,52]
-        let green: [Double] = [188,76,126,196,204,152]
-        let blue: [Double] = [156,60,34,15,113,219]
+        let red: [CGFloat] = [26/255.0,231/255.0,230/255.0,241/255.0,46,52/255.0]
+        let green: [CGFloat] = [188/255.0,76/255.0,126/255.0,196/255.0,204/255.0,152/255.0]
+        let blue: [CGFloat] = [156/255.0,60/255.0,34/255.0,15/255.0,113/255.0,219/255.0]
 
         for record in records {
             days[record.moodScore] += 1
@@ -156,7 +164,7 @@ class ThirdViewController: UIViewController {
         var colors = [UIColor]()
         
         for index in 0..<red.count {
-            let color = UIColor(red: CGFloat(red[index]/255), green: CGFloat(green[index]/255), blue: CGFloat(blue[index]/255), alpha: 0.8)
+            let color = UIColor(red: red[index], green: green[index], blue: blue[index], alpha: 0.8)
             
             colors.append(color)
         }
@@ -182,8 +190,8 @@ class ThirdViewController: UIViewController {
         
         let data = PieChartData(dataSet: dataSet)
         
-        //更新数据
         pieChartView.data = data
+        
         //不显示label
         pieChartView.drawEntryLabelsEnabled = false
         //使用百分比
@@ -218,5 +226,5 @@ class ThirdViewController: UIViewController {
 }
 
 private extension Selector {
-    static let refresh = #selector(ThirdViewController.refresh)
+    static let refresh = #selector(MoodDataViewController.refresh)
 }

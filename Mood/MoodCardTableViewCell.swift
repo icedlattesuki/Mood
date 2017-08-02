@@ -1,5 +1,5 @@
 //
-//  HistoryMoodTableViewCell.swift
+//  MoodCardTableViewCell.swift
 //  Mood
 //
 //  Created by Hys on 2017/7/25.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HistoryMoodTableViewCell: UITableViewCell {
+class MoodCardTableViewCell: UITableViewCell {
     
     //MARK: Properties
     

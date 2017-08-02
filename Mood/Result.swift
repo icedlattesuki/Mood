@@ -8,10 +8,7 @@
 
 import UIKit
 
-
-//各类错误
 enum Errors {
-    
     //注册错误
     case userNameDuplicate
     case emailDuplicate

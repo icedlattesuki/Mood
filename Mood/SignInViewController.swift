@@ -19,7 +19,7 @@ class SignInViewController: UIViewController, TextFieldDelegate, LTMorphingLabel
     @IBOutlet weak var passwordTextField: TextField!
     @IBOutlet weak var moodLabel: LTMorphingLabel!
 
-    //MARK: Override functions
+    //MARK: Override Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +31,7 @@ class SignInViewController: UIViewController, TextFieldDelegate, LTMorphingLabel
         userNameTextField.delegate = self
         passwordTextField.delegate = self
         
+        //从数据库中查询登录次数最多的用户，将其用户名和密码填入对应的输入框中
         if let user = User.getUser() {
             userNameTextField.text = user.0
             passwordTextField.text = user.1
@@ -38,17 +39,12 @@ class SignInViewController: UIViewController, TextFieldDelegate, LTMorphingLabel
         
         hideKeyboardWhenTappedAround()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     //MARK: Actions
     
     @IBAction func signIn(_ sender: ButtonExtension) {
         let userName = userNameTextField.text!
         let password = passwordTextField.text!
-        
         let alert = SCLAlertView()
         
         userNameTextField.resignFirstResponder()
@@ -57,6 +53,7 @@ class SignInViewController: UIViewController, TextFieldDelegate, LTMorphingLabel
         //判断用户名或密码是否为空
         if userName == "" || password == "" {
             alert.showError("登录失败", subTitle: "用户名或密码不能为空")
+            
             return
         }
         
@@ -101,6 +98,7 @@ class SignInViewController: UIViewController, TextFieldDelegate, LTMorphingLabel
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
+        
         return false
     }
 }

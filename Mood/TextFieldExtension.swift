@@ -34,15 +34,19 @@ class TextFieldExtension: TextField, UITextFieldDelegate{
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         self.textAlignment = .left
+        
         if self.placeholder != nil {
             tmpPlaceholder = self.placeholder!
         }
+        
         self.placeholder = nil
+        
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.resignFirstResponder()
+        
         if self.text == nil || self.text == "" {
             self.placeholder = tmpPlaceholder
             self.textAlignment = .center
@@ -51,6 +55,7 @@ class TextFieldExtension: TextField, UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.resignFirstResponder()
+        
         return true
     }
 }

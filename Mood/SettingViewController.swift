@@ -17,7 +17,7 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var timeSortSwitch: UISwitch!
     @IBOutlet weak var showAllDataSwitch: UISwitch!
     
-    //MARK: Override functions
+    //MARK: Override Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,7 @@ class SettingViewController: UIViewController {
         let x = CGFloat(0.65)
         let y = CGFloat(0.65)
         
+        //更改Switch大小
         showLatestDataSwitch.transform = CGAffineTransform(scaleX: x, y: y)
         timeSortSwitch.transform = CGAffineTransform(scaleX: x, y: y)
         showAllDataSwitch.transform = CGAffineTransform(scaleX: x, y: y)
@@ -33,6 +34,7 @@ class SettingViewController: UIViewController {
         timeSortSwitch.addTarget(self, action: .switchChanged, for: .valueChanged)
         showAllDataSwitch.addTarget(self, action: .switchChanged, for: .valueChanged)
         
+        //根据设置更改Switch的状态
         if let setting = Setting.getSetting() {
             showLatestDataSwitch.setOn(setting.0, animated: true)
             timeSortSwitch.setOn(setting.1, animated: true)
@@ -52,6 +54,7 @@ class SettingViewController: UIViewController {
     
     @IBAction func signOut(_ sender: ButtonExtension) {
         User.signOut()
+        
         performSegue(withIdentifier: "signOut", sender: nil)
     }
 }

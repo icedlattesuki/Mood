@@ -38,10 +38,6 @@ class SignUpViewController: UIViewController, TextFieldDelegate{
         hideKeyboardWhenTappedAround()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     //MARK: Actions
     
     @IBAction func back(_ sender: UIButton) {
@@ -49,28 +45,23 @@ class SignUpViewController: UIViewController, TextFieldDelegate{
     }
     
     @IBAction func signUp(_ sender: ButtonExtension) {
-        
         let userName = userNameTextField.text!
         let email = emailTextField.text!
         let password1 = password1TextField.text!
         let password2 = password2TextField.text!
-        
         let alert = SCLAlertView()
-        
-        let alertController = UIAlertController(title: "注册失败", message: "", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "好的", style: .cancel, handler: nil)
-        
-        alertController.addAction(alertAction)
         
         //判断是否有空项
         if userName == "" || email == "" || password1 == "" || password2 == "" {
             alert.showWarning("注册失败", subTitle: "各项均不能为空")
+            
             return
         }
         
         //判断两次密码是否一致
         if password1 != password2 {
             alert.showWarning("注册失败", subTitle: "两次输入密码不一致")
+            
             return
         }
         
@@ -78,6 +69,7 @@ class SignUpViewController: UIViewController, TextFieldDelegate{
         for index in userName.characters.indices {
             if userName[index] == " " {
                 alert.showWarning("注册失败", subTitle: "用户名只能由数字、字母、下划线以及中文字符组成")
+                
                 return
             }
         }
@@ -86,6 +78,7 @@ class SignUpViewController: UIViewController, TextFieldDelegate{
         for index in password1.characters.indices {
             if !((password1[index] >= "0" && password1[index] <= "9") || (password1[index] >= "a" && password1[index] <= "z") || (password1[index] >= "A" && password1[index] <= "Z")) {
                 alert.showWarning("注册失败", subTitle: "密码只能由数字和字母组成")
+                
                 return
             }
         }

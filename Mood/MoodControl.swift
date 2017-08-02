@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class MoodControl: UIStackView {
+class MoodControl: UIStackView {
     
     //MARK: Properties
     
@@ -17,11 +17,8 @@ import UIKit
             updateButtonState()
         }
     }
-    
     var buttons = [UIButton]()
-    
     let imageNames = ["开心", "愉快", "一般", "难过", "悲伤", "想哭"]
-    
     let selectedImage = "选中"
     
     //MARK: Initialization
@@ -38,7 +35,7 @@ import UIKit
         setUpButtons()
     }
     
-    //MARK: Private function
+    //MARK: Private Methods
     
     private func setUpButtons() {
         
@@ -46,17 +43,21 @@ import UIKit
         for index in 0..<buttons.count {
             removeArrangedSubview(buttons[index])
         }
+        
         buttons.removeAll()
         
         //生成button
         for index in 0..<6 {
             let button = UIButton()
+            
             if let image = UIImage(named: imageNames[index], in: nil, compatibleWith: nil) {
                 button.setImage(image, for: .normal)
             }
+            
             if let imageForSelected = UIImage(named: selectedImage, in: nil, compatibleWith: nil) {
                 button.setImage(imageForSelected, for: .selected)
             }
+            
             button.addTarget(self, action: .buttonPressed, for: .touchUpInside)
             addArrangedSubview(button)
             buttons.append(button)
@@ -77,10 +78,11 @@ import UIKit
     
     func buttonPressed(_ sender: UIButton) {
         guard let index = buttons.index(of: sender) else {
-            print("invaild buttong pressed!")
-            return
+            fatalError("invaild buttong pressed!")
         }
+        
         let score = 5 - index
+        
         if score == moodScore {
             moodScore = -1
         } else {
@@ -90,6 +92,5 @@ import UIKit
 }
 
 private extension Selector {
-    static let buttonPressed =
-        #selector(MoodControl.buttonPressed(_:))
+    static let buttonPressed = #selector(MoodControl.buttonPressed(_:))
 }

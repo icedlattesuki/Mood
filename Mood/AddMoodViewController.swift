@@ -31,11 +31,10 @@ class AddMoodViewController: UIViewController {
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {
-        
         if moodControl.moodScore == -1 {
             let alert = SCLAlertView()
 
-            alert.showWarning("保存失败", subTitle: "需要选定一个心情~~~")
+            alert.showWarning("保存失败", subTitle: "需要选定一个心情")
         } else {
             let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
             let alert = SCLAlertView(appearance: appearance)
@@ -55,7 +54,7 @@ class AddMoodViewController: UIViewController {
     
     //MARK: Methods
     
-    @objc private func saveSuccess() {
+    func saveSuccess() {
         self.textField.resignFirstResponder()
         self.dismiss(animated: true, completion: nil)
     }

@@ -35,7 +35,7 @@ class Setting {
         self.showAllData = showAllData
     }
     
-    //MARK: Methods
+    //MARK: Public Methods
     
     func update() {
         do {
@@ -49,6 +49,7 @@ class Setting {
     
     //MARK: Static Methods
     
+    //获取当前用户的设置，失败则返回nil
     static func getSetting() -> (Bool,Bool,Bool)? {
         do {
             try checkout()
@@ -59,9 +60,11 @@ class Setting {
         } catch {
             
         }
+        
         return nil
     }
     
+    //检测，失败则向上抛出错误
     static func checkout() throws {
         do {
             if db == nil {

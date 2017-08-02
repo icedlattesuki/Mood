@@ -9,7 +9,6 @@
 import UIKit
 import LeanCloud
 
-//记录类
 class Record {
     
     //MARK: Properties
@@ -35,6 +34,7 @@ class Record {
     
     //MARK: Public Methods
     
+    //保存记录至远端数据库
     func save() -> Result {
         var result = Result()
         
@@ -56,22 +56,22 @@ class Record {
         return result
     }
     
+    //从远端数据库删除记录
     func remove() -> Result {
         var result = Result()
         let object = LCObject(className: "MoodRecords", objectId: objId)
-        
         let LCResult = object.delete()
         
         if LCResult.isSuccess {
             result.success = true
-            print("OK")
         }
         
         return result
     }
     
-    //MARK: Static methods
+    //MARK: Static Methods
     
+    //获取当前用户的所有记录
     static func getAllRecords() -> [Record] {
         var result = [Record]()
         let query = LCQuery(className: "MoodRecords")
@@ -81,6 +81,7 @@ class Record {
         } else {
             fatalError("错误！未登录")
         }
+        
         query.whereKey("objectId", .selected)
         query.whereKey("moodScore", .selected)
         query.whereKey("createdAt", .selected)
@@ -95,7 +96,6 @@ class Record {
                 let objectMoodScore = object.get("moodScore")!.intValue!
                 let objectSentence = object.get("sentence")!.stringValue!
                 let objectCreatedAt = object.createdAt!.dateValue!
-                
                 let record = Record(objId: objectId, moodScore: objectMoodScore, sentence: objectSentence, createdAt: objectCreatedAt)
                 
                 result.append(record)
@@ -105,14 +105,16 @@ class Record {
         return result
     }
     
+    //判断今天是否已经记录过了
     static func isAdded() -> Bool {
         let currentDate = Date()
         var dateCompenents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: currentDate)
+        
         dateCompenents.hour = 0
         dateCompenents.minute = 0
         dateCompenents.second = 0
-        let resDate = Calendar.current.date(from: dateCompenents)
         
+        let resDate = Calendar.current.date(from: dateCompenents)
         let query = LCQuery(className: "MoodRecords")
         
         if let currentUser = LCUser.current {
@@ -120,6 +122,7 @@ class Record {
         } else {
             fatalError("错误！未登录")
         }
+        
         query.whereKey("createdAt", .greaterThanOrEqualTo(resDate!))
         
         let queryResult = query.find().objects
