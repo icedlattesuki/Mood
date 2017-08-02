@@ -17,8 +17,10 @@ class ThirdViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var lineChartView: LineChartView!
+    @IBOutlet weak var lineChartLabel: UILabel!
     @IBOutlet weak var pieChartView: PieChartView!
     var records = [Record]()
+    var showAllData = false
     
     //MARK: override
     
@@ -36,6 +38,12 @@ class ThirdViewController: UIViewController {
     
     func refresh() {
         records = Record.getAllRecords()
+        
+        //更新设置
+        if let setting = Setting.getSetting() {
+            showAllData = setting.2
+        }
+        
         showScore()
         setupLineChart()
         setupPieChart()
@@ -56,7 +64,10 @@ class ThirdViewController: UIViewController {
         var dataEntries = [ChartDataEntry]()
         var dates = [String]()
         
-        let num = records.count > 7 ? 7 : records.count
+        lineChartLabel.text = showAllData ? "历史心情趋势图" : "最近7天心情趋势图"
+        
+        let num = showAllData ? records.count : (records.count > 7 ? 7 : records.count)
+
         for index in 0..<num {
             let record = records[records.count - num + index]
             let dataEntry = ChartDataEntry(x: Double(index), y: Double(record.moodScore))
@@ -116,6 +127,9 @@ class ThirdViewController: UIViewController {
         lineChartView.rightAxis.enabled = false
         //左边的Y轴不显示
         lineChartView.leftAxis.enabled = false
+        //设置间隔
+        lineChartView.xAxis.granularityEnabled = true
+        lineChartView.xAxis.granularity = 1
     }
     
     func setupPieChart() {
