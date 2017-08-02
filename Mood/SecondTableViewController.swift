@@ -185,8 +185,7 @@ class SecondTableViewController: UITableViewController{
             let alert = SCLAlertView()
             alert.showWarning("今天已经记录过啦!", subTitle: "")
         } else {
-            performSegue(withIdentifier: "addMood", sender: self)
-            present(AddMoodViewController(), animated: true, completion: nil)
+            performSegue(withIdentifier: "addMood", sender: nil)
         }
     }
 }
