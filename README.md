@@ -7,7 +7,7 @@
 
 每个用户每天都能且仅能添加一条心情记录。
 
-![](http://olrdynjoh.bkt.clouddn.com/IMG_208412.PNG)
+![](http://olrdynjoh.bkt.clouddn.com/IMG_2074.PNG)
 
 ### 2、心情卡片
 
