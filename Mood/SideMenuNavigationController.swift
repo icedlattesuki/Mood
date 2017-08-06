@@ -15,9 +15,9 @@ class SideMenuNavigationController: UISideMenuNavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationBar.barTintColor = UIColor(red: ThemeColor.red, green: ThemeColor.green, blue: ThemeColor.blue, alpha: ThemeColor.alpha)
+//        self.navigationBar.barTintColor = UIColor(red: ThemeColor.red, green: ThemeColor.green, blue: ThemeColor.blue, alpha: ThemeColor.alpha)
         self.navigationBar.isTranslucent = true
-        self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Color.white]
+//        self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Color.white]
         
         SideMenuManager.menuWidth = 280
         SideMenuManager.menuPresentMode = .viewSlideInOut

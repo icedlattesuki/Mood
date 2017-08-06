@@ -174,7 +174,7 @@ class MoodCardTableViewController: UITableViewController{
         card.contentViewEdgeInsetsPreset = .wideRectangle2
         card.contentViewEdgeInsets.left = 12
         card.bottomBarEdgeInsetsPreset = .wideRectangle2
-        card.bottomBarEdgeInsets.right = 8
+        card.bottomBarEdgeInsets.right = 13
         card.borderWidth = 0.1
         
         return card
@@ -185,17 +185,17 @@ class MoodCardTableViewController: UITableViewController{
         
         switch record.moodScore {
         case 5:
-            image = UIImage(named: "开心1")!
+            image = UIImage(named: "开心")!
         case 4:
-            image = UIImage(named: "愉快1")!
+            image = UIImage(named: "愉快")!
         case 3:
-            image = UIImage(named: "一般1")!
+            image = UIImage(named: "一般")!
         case 2:
-            image = UIImage(named: "难过1")!
+            image = UIImage(named: "难过")!
         case 1:
-            image = UIImage(named: "悲伤1")!
+            image = UIImage(named: "悲伤")!
         case 0:
-            image = UIImage(named: "想哭1")!
+            image = UIImage(named: "想哭")!
         default:
             image = UIImage()
         }

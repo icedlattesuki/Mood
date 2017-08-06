@@ -13,7 +13,6 @@ class MoodDataViewController: UIViewController {
     
     //MARK: Properties
     
-    @IBOutlet weak var totalScoreLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var lineChartView: LineChartView!
@@ -46,8 +45,6 @@ class MoodDataViewController: UIViewController {
             showAllData = setting.2
         }
         
-        //显示总分
-        showScore()
         //画趋势图
         setupLineChart()
         //画分布图
@@ -55,16 +52,6 @@ class MoodDataViewController: UIViewController {
         
         //结束刷新
         self.scrollView.refreshControl!.endRefreshing()
-    }
-    
-    func showScore() {
-        var totalScore = 0
-        
-        for record in records {
-            totalScore += record.moodScore
-        }
-        
-        totalScoreLabel.text = String(totalScore)
     }
     
     func setupLineChart() {

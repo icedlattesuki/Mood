@@ -22,8 +22,8 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let x = CGFloat(0.65)
-        let y = CGFloat(0.65)
+        let x = CGFloat(0.7)
+        let y = CGFloat(0.7)
         
         //更改Switch大小
         showLatestDataSwitch.transform = CGAffineTransform(scaleX: x, y: y)
